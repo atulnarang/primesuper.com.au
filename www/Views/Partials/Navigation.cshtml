@@ -1,0 +1,57 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using PrimeSuper.Web.Classes;
+
+@*Render the sitemap by passing the root node to the traverse helper*@
+
+<div id="nav">
+    <div style="float: left; width: 750px;">
+        <h2 class="displaynone">Site navigation</h2>
+        <ul id="parentUL">
+            @Traverse(CurrentPage.AncestorsOrSelf(1).First(), 0)
+        </ul>
+    </div>
+    <div style="overflow: hidden">
+        @Html.Partial("~/Views/Partials/SearchBox.cshtml", new PrimeSuper.Web.Models.SearchBoxViewModel() { IsSideContent = false })
+    </div>
+</div>
+@*Helper method to travers through all descendants*@
+
+@helper Traverse(dynamic node, int isSubmenu)
+{
+@*Select visible children *@
+    var items = node.Children.Where("Visible").Where("displayInHeaderNavigation == true");	
+
+@*If any items are returned, render a list *@
+    
+    if (items.Any())
+    {
+
+        var hasmenu = "hasmenu";
+        var style = "padding-left:28px;padding-right:25px;";
+
+        foreach (var item in items)
+        {
+    <li 
+         class="@if (item.Children.Where("Visible").Where("displayInHeaderNavigation == true").Any())
+                {
+                   @hasmenu;
+                }">
+        <a href="@item.Url">@PrimeSuper.Web.Classes.Extensions.GetNavigationTitle(item)</a>
+
+        @*Run the traverse helper again *@
+        @if (item.Children.Where("Visible").Where("displayInHeaderNavigation == true").Any())
+        {
+            
+            <ul>
+                <li style="display: none"></li>
+                @Traverse(item, isSubmenu++)
+            </ul>
+            
+        }
+
+    </li>
+        }
+
+    }
+}
+

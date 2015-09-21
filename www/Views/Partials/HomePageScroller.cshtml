@@ -1,0 +1,45 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+    @if (Model.Content.HasValue("carouselitems"))
+    {
+        var typedMutliNodeTreePicker = Model.Content.GetPropertyValue<string>("carouselitems");
+        var typedPublishedMNTPNodeList = typedMutliNodeTreePicker.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+        var typedMNTPCollection = Umbraco.TypedContent(typedPublishedMNTPNodeList).Where(i => i != null);
+        int count = 0;
+        
+        <div id="promoFeature">
+            <ul id="promoItems">
+              @{
+
+                foreach(var carouselItem in typedMNTPCollection)
+                {
+                    if(carouselItem.HasValue("linkURL") || carouselItem.HasValue("bannerImage"))
+                    {
+                        <li @String.Format("{0}", count == 0 ? "class=first" : string.Empty)>
+
+                            @{count++;}
+
+                        <h3 style="font-size: 45px;margin-left: 25px;font-family: AvenirHeavy">@carouselItem.GetPropertyValue("title")</h3>
+
+                        @if(carouselItem.HasValue("linkURL"))
+                        {
+                            <a href="@carouselItem.GetPropertyValue("linkURL")" alt="@carouselItem.GetPropertyValue("title")" class="button">
+                                @if(carouselItem.HasValue("linkText")) 
+                                {
+                                    @carouselItem.GetPropertyValue("linkText")
+                                }
+                            </a>
+                        }
+
+                        @if(carouselItem.HasValue("bannerImage"))
+                        {
+                            var media = Umbraco.TypedMedia(carouselItem.GetPropertyValue("bannerImage"));
+                            <img src="@media.GetPropertyValue("umbracoFile")" />
+                        }
+                        </li>
+                    }
+                 }
+              }
+            </ul>
+        </div>
+    }

@@ -1,0 +1,99 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.cshtml";
+    ViewBag.IsMap = true;
+    ViewBag.FooterClass = "mapFooter";
+    ViewBag.PageClass = "class=mapPage mapLanding";
+}
+<div class="pageRow pageRowTop">
+    <div class="pageRowInner">
+        <!-- start: header -->
+        @Html.Partial("~/Views/Partials/Branding.cshtml")
+        <div id="header">
+            <!-- start: nav -->
+            @Html.Partial("~/Views/Partials/Navigation.cshtml")
+            <!-- end: nav -->
+        </div>
+        <!-- end: header -->
+        <!-- start: container -->
+        <div class="container" style="width: 997px; margin: 0 auto;">
+            <div class="container-2" style="width: 997px; margin: 0 auto;">
+                <!-- start: content -->
+                <div id="content">
+                    <div id="contentInner">
+                        <div class="content" style="width: 997px; margin: 0 auto;">
+                            <div class="title" style="background-color: #f0f0f0; overflow: hidden; height: 150px; border-bottom: 9px solid #ccc;">
+                                <h1>We're all over Australia</h1>
+                                <h2 style="font-size: 16px; font-family: AvenirMedium; color: #626366; margin-left: 28px; opacity: 0.8;">Our field staff travel the country supporting our members, view their travels</h2>
+
+                            </div>
+                            <!-- .title -->
+                            <!-- start: Map Control -->
+                            <div id="mapcontainer">
+                                <div class="mapContain">
+                                    <div class="drawerContainer">
+                                        <div id="manager-drawer">
+                                            <span id="managerClose"></span>
+
+                                            <ul class="clfx">
+                                            </ul>
+                                        </div>
+                                        <div class="mapWrapper">
+                                            <div class="managerDetails clfx">
+                                                <img id="managerName" src="" alt="" />
+                                            </div>
+                                            <div id="recent-visits">
+                                                <span class="cufon">My recent visits</span>
+                                                <div id="mapNavWrapper">
+                                                    <ul id="mapNav"></ul>
+                                                    <span class="mapNav-btm"></span>
+                                                </div>
+                                            </div>
+                                            <div class="controlBtns">
+                                                <a href="#" id="previousLocationButton" class="cufon" onclick="javascript:goToPrevious(); return false;">&nbsp;</a>
+                                                <a href="#" id="nextLocationButton" class="cufon" onclick="javascript:goToNext();return false;">&nbsp;</a>
+                                            </div>
+                                            <div id="drawerButton">
+                                                <span class="cufon">Change Region</span>
+                                                <span class="btn">Change</span>
+                                            </div>
+                                            <div id="zoom-controls">
+                                                <span class="cufon">Zoom</span>
+                                                <a href="#" class="zoomout">-</a>
+                                                <a href="#" class="zoomin">+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="map_canvas" style="width: 100%; height: 830px">
+                            </div>
+                            <div class="locationWrapper">
+                                <div id="nextLocation"></div>
+                            </div>
+                        </div>
+                        <!-- end Map Control -->
+                    </div>
+                </div>
+              
+                <!-- end: content-2 -->
+                <span class="clear"></span>
+            </div>
+            <!-- end: content -->
+            <span class="clear"></span>
+        </div>
+        <!-- end: container2 -->
+    </div>
+    <!-- end: container -->
+</div>
+
+@section FooterIncludes {
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=true" type="text/javascript"></script>
+    <script src="/resources/desktop/js/ext/infobox.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/resources/desktop/css/map.css" />
+
+    <script type="text/javascript">
+        managerData = @Html.Raw(MapManager.Library.Utilities.getManagerData())
+    </script>
+    <script src="/resources/desktop/js/ext/map.js" type="text/javascript"></script>
+}

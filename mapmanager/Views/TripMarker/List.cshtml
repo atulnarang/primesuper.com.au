@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MapManager.Library.TripMarker>
+
+@{
+    ViewBag.Title = "Towns travelled";
+}
+
+<h2>@ViewBag.Title</h2>
+<table>
+    <tr>
+        <th>
+            Date
+        </th>
+        <th>
+            Town
+        </th>
+        <th>
+            Message
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VisitDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationName) (@Html.DisplayFor(modelItem => item.LocationState))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) @Html.ActionLink("X", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,52 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using PrimeSuper.Web.Classes;
+@{
+    Layout = "MasterLayout.mobile.cshtml";
+    ViewBag.BodyClass = "mobile";
+    
+    int currentId = CurrentPage.Id;
+}
+
+@if(Model.Content.GetProperty("mobileContent").HasValue)
+{
+    @Html.Partial("~/Views/Partials/MobileBack.cshtml");
+}
+<div class="inner">
+    <h1 class="heading-main">@(@Model.Content.GetPropertyValue("mobilePageTitle") != "" ? @Model.Content.GetPropertyValue("mobilePageTitle") : @Model.Content.GetPropertyValue("title"))</h1>
+</div>
+
+@if(Model.Content.GetProperty("mobileContent").HasValue)
+{
+    if(currentId == ConfigurationHelper.GetPropertyValueNode("contactUsItem").Id)
+    {
+        @Html.Partial("~/Views/Partials/MobileContactUs.cshtml")
+    }
+            
+    <div class="module moduleWysiwyg listing">
+        <div class="inner">
+
+    @* allows for main content to be used if no mobile content entered. ruled to be left out and maybe implemented in future deployments.
+        @(@Model.Content.GetPropertyValue<string>("mobileContent") != "" ? @Model.Content.GetPropertyValue("mobileContent") : @Model.Content.GetPropertyValue("mainContent"))*@
+
+
+    @if (currentId == PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("sitemapItem").Id)
+    {
+        @Html.Partial("~/Views/Partials/SitemapMobile.cshtml")
+    }
+    else if(currentId != ConfigurationHelper.GetPropertyValueNode("contactUsItem").Id)
+    {
+        @Model.Content.GetPropertyValue("mobileContent")
+    }
+
+        </div>
+    </div>
+}
+
+@if (Model.Content.GetProperty("mobileContent").HasValue)
+{
+   @Html.Partial("~/Views/Partials/MobileBack.cshtml");
+}
+else
+{
+    @Html.Partial("~/Views/Partials/MobileLandingNavigation.cshtml")   
+}

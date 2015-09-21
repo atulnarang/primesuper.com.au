@@ -1,0 +1,56 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.mobile.cshtml";
+    ViewBag.BodyClass = "mobile";
+}
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")
+
+<div class="module moduleLinks moduleLinksList">
+    @{
+	    var listChildren = Model.Content.Children.Where("Visible");
+
+	    if (listChildren.Any())
+	    {
+		    PrimeSuper.Web.Classes.ListingHelper listingHelper = new PrimeSuper.Web.Classes.ListingHelper(listChildren);
+                                            
+		    <div class="moduleContent">
+                                            
+			    <ul>
+			        @foreach (var child in listChildren.Skip(listingHelper.Pager.Skip).Take(listingHelper.Pager.Take))
+                    {
+                        
+
+			            <li class="item">	
+                            
+                            @{string thumbnailImage = "";}
+
+                            @if (child.HasValue("thumbnailImage"))
+                            {
+                            var image = Umbraco.TypedMedia(child.GetPropertyValue("thumbnailImage"));
+                            thumbnailImage = image.GetPropertyValue<string>
+                                ("umbracoFile");
+
+                                <a href="@child.GetPropertyValue("externalUrl")" target="_blank">
+                                    <img src="@thumbnailImage">
+                                    @*<asp:Image ID="Image1" runat="server" Visible='<%# !IsNullOrEmpty(Eval("ThumbnailIdTitle")) %>' ImageUrl='<%# Eval("ThumbnailIdFilenamePath") %>' AlternateText='<%# Eval("ThumbnailIdTitle")%>' />*@
+                                </a>
+                                }
+
+                                <div class="details">
+                                    <h3><a href="@child.GetPropertyValue("externalUrl")" target="_blank">@child.GetPropertyValue("title")</a></h3>
+                                    <p><a href="@child.GetPropertyValue("externalUrl")" target="_blank">@child.GetPropertyValue("externalUrl")</a></p>
+                                    <p>@child.GetPropertyValue("summary")</p>
+                                </div>
+</li>                                                
+			        }
+			    </ul>
+		    </div><!-- .moduleContent -->
+                                        
+		    @PaginationControls.RenderPaging(listingHelper.Pager, Model.Content.Id, "", true)    
+	    }                                                 
+    }
+
+</div>
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")

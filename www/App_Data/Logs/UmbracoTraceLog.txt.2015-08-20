@@ -1,0 +1,112 @@
+2015-08-20 15:31:06,841 [7] INFO  Umbraco.Core.CoreBootManager - [P2604/T1/D2] Umbraco 7.2.8 application starting on CHRIS-PC
+2015-08-20 15:31:07,170 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Determining hash of code files on disk
+2015-08-20 15:31:07,192 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Hash determined (took 21ms)
+2015-08-20 15:31:07,192 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2015-08-20 15:31:07,789 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 42 (took 596ms)
+2015-08-20 15:31:08,073 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2015-08-20 15:31:08,073 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 0ms)
+2015-08-20 15:31:08,073 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+2015-08-20 15:31:08,075 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 16 (took 1ms)
+2015-08-20 15:31:08,103 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2015-08-20 15:31:08,105 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 6 (took 1ms)
+2015-08-20 15:31:08,105 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2015-08-20 15:31:08,159 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 36 (took 53ms)
+2015-08-20 15:31:08,304 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2015-08-20 15:31:08,305 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 0ms)
+2015-08-20 15:31:08,305 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2015-08-20 15:31:08,306 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 0ms)
+2015-08-20 15:31:09,925 [7] INFO  Umbraco.Core.DatabaseContext - [P2604/T1/D2] CanConnect = True
+2015-08-20 15:31:10,198 [7] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - [P2604/T1/D2] Initializing Umbraco internal event handlers for cache refreshing
+2015-08-20 15:31:10,475 [7] INFO  Umbraco.Web.Search.ExamineEvents - [P2604/T1/D2] Initializing Examine and binding to business logic events
+2015-08-20 15:31:10,702 [7] INFO  Umbraco.Web.Search.ExamineEvents - [P2604/T1/D2] Adding examine event handlers for index providers: 3
+2015-08-20 15:31:10,795 [7] INFO  Umbraco.Core.CoreBootManager - [P2604/T1/D2] Umbraco application startup complete (took 3756ms)
+2015-08-20 15:31:15,789 [7] INFO  Umbraco.Core.ApplicationContext - [P2604/T1/D2] ApplicationUrl: http://localhost:5180/umbraco (UmbracoModule request)
+2015-08-20 15:31:19,681 [7] INFO  umbraco.content - [P2604/T1/D2] Load Xml from file...
+2015-08-20 15:31:19,753 [7] INFO  umbraco.content - [P2604/T1/D2] Loaded Xml from file.
+2015-08-20 15:31:22,257 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+2015-08-20 15:31:22,258 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 44 (took 1ms)
+2015-08-20 15:31:37,022 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2015-08-20 15:31:37,024 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 23 (took 1ms)
+2015-08-20 15:31:37,561 [7] INFO  umbraco.providers.UsersMembershipProvider - [P2604/T1/D2] Login attempt succeeded for username rpowell from IP address ::1
+2015-08-20 15:31:37,569 [7] INFO  umbraco.BusinessLogic.Log - [P2604/T1/D2] Redirected log call (please use Umbraco.Core.Logging.LogHelper instead of umbraco.BusinessLogic.Log) | Type: Login | User: 23 | NodeId: -1 | Comment: User rpowell has logged in
+2015-08-20 15:31:37,668 [7] INFO  Umbraco.Web.Security.WebSecurity - [P2604/T1/D2] User Id: 23 logged in
+2015-08-20 15:31:38,070 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:31:38,085 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 14ms)
+2015-08-20 15:31:38,551 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of umbraco.interfaces.IApplication
+2015-08-20 15:31:38,569 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of umbraco.interfaces.IApplication, found 7 (took 17ms)
+2015-08-20 15:31:39,115 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:31:39,115 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:31:39,117 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of umbraco.interfaces.ITree
+2015-08-20 15:31:39,134 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of umbraco.interfaces.ITree, found 19 (took 16ms)
+2015-08-20 15:31:39,975 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of umbraco.interfaces.ITree
+2015-08-20 15:31:39,998 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of umbraco.interfaces.ITree, found 39 (took 22ms)
+2015-08-20 15:31:55,316 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:31:55,316 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:31:55,932 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of umbraco.interfaces.ICacheRefresher
+2015-08-20 15:31:55,953 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 21 (took 20ms)
+2015-08-20 15:31:56,607 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:31:56,607 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:32:20,270 [7] INFO  umbraco.BusinessLogic.Log - [P2604/T1/D2] Log scrubbed.  Removed all items older than 2015-06-21 15:32:20
+2015-08-20 15:37:04,437 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:37:04,437 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:41:52,045 [7] INFO  umbraco.providers.UsersMembershipProvider - [P2604/T1/D2] Login attempt succeeded for username rpowell from IP address ::1
+2015-08-20 15:41:52,048 [7] INFO  Umbraco.Web.Security.WebSecurity - [P2604/T1/D2] User Id: 23 logged in
+2015-08-20 15:41:52,053 [7] INFO  umbraco.BusinessLogic.Log - [P2604/T1/D2] Redirected log call (please use Umbraco.Core.Logging.LogHelper instead of umbraco.BusinessLogic.Log) | Type: Login | User: 23 | NodeId: -1 | Comment: User rpowell has logged in
+2015-08-20 15:48:44,009 [7] INFO  Umbraco.Core.Publishing.PublishingStrategy - [P2604/T1/D2] Content 'New Banner 1' with Id '0' has been published.
+2015-08-20 15:48:48,183 [7] INFO  umbraco.content - [P2604/T1/D2] Save Xml to file...
+2015-08-20 15:48:48,264 [7] INFO  umbraco.content - [P2604/T1/D2] Saved Xml to file.
+2015-08-20 15:49:19,057 [7] INFO  Umbraco.Core.Publishing.PublishingStrategy - [P2604/T1/D2] Content 'New Banner 2' with Id '0' has been published.
+2015-08-20 15:49:23,179 [7] INFO  umbraco.content - [P2604/T1/D2] Save Xml to file...
+2015-08-20 15:49:23,259 [7] INFO  umbraco.content - [P2604/T1/D2] Saved Xml to file.
+2015-08-20 15:49:34,629 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:49:34,629 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:52:29,601 [7] INFO  Umbraco.Core.Publishing.PublishingStrategy - [P2604/T1/D2] Content 'New Banner 1' with Id '2482' has been published.
+2015-08-20 15:52:33,800 [7] INFO  umbraco.content - [P2604/T1/D2] Save Xml to file...
+2015-08-20 15:52:33,864 [7] INFO  umbraco.content - [P2604/T1/D2] Saved Xml to file.
+2015-08-20 15:52:50,738 [7] INFO  Umbraco.Core.Publishing.PublishingStrategy - [P2604/T1/D2] Content 'New Banner 2' with Id '2483' has been published.
+2015-08-20 15:52:54,875 [7] INFO  umbraco.content - [P2604/T1/D2] Save Xml to file...
+2015-08-20 15:52:54,938 [7] INFO  umbraco.content - [P2604/T1/D2] Saved Xml to file.
+2015-08-20 15:53:08,141 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:53:08,141 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:53:09,233 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:53:09,233 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:57:52,121 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:57:52,121 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:58:04,337 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:58:04,337 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:58:36,428 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:58:36,428 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 15:58:49,700 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 15:58:49,701 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:05:45,646 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:05:45,646 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:05:52,476 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:05:52,477 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:06:25,783 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:06:25,783 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:07:09,000 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:07:09,001 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:08:06,129 [7] INFO  umbraco.providers.UsersMembershipProvider - [P2604/T1/D2] Login attempt succeeded for username rpowell from IP address ::1
+2015-08-20 16:08:06,131 [7] INFO  umbraco.BusinessLogic.Log - [P2604/T1/D2] Redirected log call (please use Umbraco.Core.Logging.LogHelper instead of umbraco.BusinessLogic.Log) | Type: Login | User: 23 | NodeId: -1 | Comment: User rpowell has logged in
+2015-08-20 16:08:06,132 [7] INFO  Umbraco.Web.Security.WebSecurity - [P2604/T1/D2] User Id: 23 logged in
+2015-08-20 16:08:09,997 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:08:09,997 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:08:11,207 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:08:11,207 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:08:55,646 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:08:55,646 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:09:15,480 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:09:15,480 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:09:48,247 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:09:48,247 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:16:51,155 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:16:51,155 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:17:27,960 [7] INFO  Umbraco.Core.Publishing.PublishingStrategy - [P2604/T1/D2] Content 'Home' with Id '1082' has been published.
+2015-08-20 16:17:32,141 [7] INFO  umbraco.content - [P2604/T1/D2] Save Xml to file...
+2015-08-20 16:17:32,198 [7] INFO  umbraco.content - [P2604/T1/D2] Saved Xml to file.
+2015-08-20 16:23:11,600 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:23:11,601 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:23:14,366 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:23:14,366 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-08-20 16:23:15,890 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-08-20 16:23:15,890 [7] INFO  Umbraco.Core.PluginManager - [P2604/T1/D2] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)

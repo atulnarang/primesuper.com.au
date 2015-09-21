@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using PrimeSuper.Web.Classes;
+
+@*Render the sitemap by passing the root node to the traverse helper*@
+<div class="sitemap">
+    @Traverse(Model.Content.AncestorsOrSelf(1).FirstOrDefault())
+</div>
+
+@*Helper method to travers through all descendants*@
+@helper Traverse(Umbraco.Core.Models.IPublishedContent node)
+{
+    @* Update the level to reflect how deep you want the sitemap to go *@
+    //var maxLevelForSitemap = 4;
+
+    @*Select visible children *@
+    var items = node.Children.Where(n => n.HasProperty("noDisplayOnSitemap") && !n.GetPropertyValue<bool>("noDisplayOnSitemap")); //.Where("Level <= " + maxLevelForSitemap)
+    @*If any items are returned, render a list *@
+    
+    if (items.Any())
+    {
+        <ul>
+            @foreach (var item in items)
+            {
+                <li class="level-@item.Level">
+                    <a href="@item.Url">@item.GetNavigationTitle()</a>
+
+                    @*Run the traverse helper again *@
+                    @Traverse(item)
+                </li>
+            }
+        </ul>
+    }
+}

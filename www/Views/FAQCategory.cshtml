@@ -1,0 +1,129 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.cshtml";
+    ViewBag.BodyClass = "insideTemplate";
+}
+
+<div class="pageRow pageRowTop">
+    <div class="pageRowInner">
+        <!-- start: header -->
+        @Html.Partial("~/Views/Partials/Branding.cshtml")
+
+        <!-- start: nav -->
+        <div id="header">
+            @Html.Partial("~/Views/Partials/Navigation.cshtml")
+        </div>
+        <!-- end: nav -->
+        <!-- end: header -->
+        <!-- start: container -->
+        <div class="container">
+
+            <!-- This issue is related to the issue in the CS file -->
+            <div class="container-2">
+
+                <div class="globalBanner">
+                    <div class="banner-content-text-2">
+                        @Html.Partial("~/Views/Partials/Breadcrumb.cshtml")
+
+                        @if (Model.Content.HasValue("mainImage"))
+                        {
+                            var mediaItem = Umbraco.TypedMedia(Model.Content.GetPropertyValue("mainImage"));
+                            <img src="@mediaItem.GetPropertyValue("umbracoFile")" alt="@mediaItem.GetPropertyValue("Name")" />
+                        }
+                        <h1>@Model.Content.GetPropertyValue("title")</h1>
+                        @if (Model.Content.HasValue("summary"))
+                        {
+                            <div class="topText">
+                                <div class="module moduleWysiwyg">
+                                    <div class="moduleContent">
+                                        @Model.Content.GetPropertyValue("headerSummary")
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="bannerEdge"></div>
+
+                    @Html.Partial("~/Views/Partials/ContentControls.cshtml")
+                </div>
+
+                <!-- start: content -->
+                <div id="content">
+                    <div id="contentInner">
+
+                        <div class="content">
+
+                            <!-- wysiwyg -->
+
+                            <div class="wysiwyg">
+
+                                <div class="module moduleFaq moduleFaqList">
+                                    <!-- begin faq listing -->
+                                    @if (Model.Content.Children.Any())
+                                    {
+                                        PrimeSuper.Web.Classes.ListingHelper listingHelper = new PrimeSuper.Web.Classes.ListingHelper(Model.Content.Children);
+
+
+                                        <div class="moduleContent">
+
+                                            <ul>
+                                                @foreach (var faqItem in Model.Content.Children.Skip(listingHelper.Pager.Skip).Take(listingHelper.Pager.Take))
+                                                {
+                                                    <li class="item">
+                                                        <div class="details">
+                                                            <h3><a href="@faqItem.Url">@faqItem.GetPropertyValue("question")</a></h3>
+                                                            <p>@Html.Raw(listingHelper.GetTruncatedContent(faqItem, "mainContent", ""))</p>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            </ul>
+
+                                        </div><!--moduleContent-->
+
+
+
+                                        @PaginationControls.RenderPaging(listingHelper.Pager, Model.Content.Id, "", true);
+
+                                    }
+                                    else
+                                    {
+                                        <p>There are no FAQ items for this category.</p>
+                                    }
+
+                                </div><!-- .module -->
+                                <!-- end faq listing -->
+
+
+
+                            </div>
+
+
+
+                            <!-- end wysiwyg -->
+
+                        </div>
+
+                    </div>
+                    <!-- end: content-2 -->
+
+                    <span class="clear"></span>
+
+                </div>
+                <!-- end: content -->
+
+                <div id="sideContent">
+                    <!-- start: sideContent -->
+                    @Html.Partial("~/Views/Partials/SideNavigation.cshtml")
+                @*    @Html.Partial("~/Views/Partials/SearchBox.cshtml", new PrimeSuper.Web.Models.SearchBoxViewModel() { IsSideContent = true })*@
+                    <!-- end: sideContent -->
+                </div>
+                <span class="clear"></span>
+            </div>
+            <!-- end: container2 -->
+
+        </div>
+        <!-- end: container -->
+    </div>
+    <!-- end: pageRowInner -->
+</div>
+<!-- end: pageRow pageRowTop -->

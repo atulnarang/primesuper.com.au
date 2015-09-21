@@ -1,0 +1,79 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="no-js">
+
+<head id="Head1" runat="server">
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+    <link rel="stylesheet" type="text/css" href="/Resources/mobile/css/style.css" media="screen" />
+
+</head>
+<body runat="server" id="body">
+    <div class="overlay"></div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <a href="/">
+                    <img src="/Resources/mobile/img/logo-prime-super.png" alt="logo" /></a>
+            </div>
+            <nav class="nav members">
+                <ul>
+                    <li>
+                        <a href="/mobile/join-prime-super.html">Join</a>
+                    </li>
+                    <li>
+                        <select id="login">
+                            <option value="login">Login</option>
+                            <option value="https://memberservices.primesuper.com.au/public/Login.aspx">Individual Members</option>
+                            <option value="https://employerservices.primesuper.com.au/russell_prod/employer/index.jsp">Employers & Self Employed</option>
+                        </select>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="nav nav-main">
+                <ul>
+                    @Html.Partial("~/Views/Partials/MobileSideNavigation.cshtml")
+                    <li><a href="/">Home</a></li>
+                    @Html.Partial("~/Views/Partials/MobileTopNavigation.cshtml")
+                </ul>
+            </nav>
+        </header>
+        <div class="main" role="main">
+            @RenderBody()
+            @*<reactive:RContentPlaceHolder ID="ContentPlaceHolder" Title="Content" runat="server">
+                </reactive:RContentPlaceHolder>
+                <reactive:RContentPlaceHolder ID="RContentPlaceHolder1" Title="Promo" runat="server">
+                </reactive:RContentPlaceHolder>*@
+            
+           
+        </div>
+        <footer>
+            <div class="inner">
+                <div class="innerFooter">
+                    <p>&copy; Copyright Prime Super 2013</p>
+                     <p style="float: right;">
+                    <strong><a href="/?src=m">Visit full site</a></strong>
+                </p>
+                </div>
+                <nav>
+                    @Html.Partial("~/Views/Partials/MobileFooterNavigation.cshtml")
+                </nav>
+               
+            </div>
+        </footer>
+    </div>
+    <!--container -->
+
+    <script type="text/javascript" src="/Resources/mobile/js/libs/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/Resources/mobile/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="/Resources/mobile/js/main.js"></script>
+
+    @*<asp:SiteMapDataSource ID="PrimarySitemapData" runat="server" />
+        <primesuper:Marketing ID="GoogleRemarketing" runat="server" />
+        <primesuper:Analytics ID="Analytics" runat="server" />*@
+
+</body>
+</html>

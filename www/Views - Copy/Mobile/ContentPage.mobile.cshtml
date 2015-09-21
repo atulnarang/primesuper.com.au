@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.mobile.cshtml";
+    ViewBag.BodyClass = "mobile";
+}
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")
+
+<div class="inner">
+    <h1 class="heading-main">@Model.Content.GetPropertyValue("mobilePageTitle")</h1>
+</div>
+
+<div class="module moduleWysiwyg listing">
+    <div class="inner">
+        @Model.Content.GetPropertyValue("mobileContent")
+    </div>
+</div>
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")

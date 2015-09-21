@@ -1,0 +1,17 @@
+﻿@using umbraco.cms.businesslogic.web;
+@*@{
+    string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+    DocumentType dt = DocumentType.GetByAlias("GlossaryLetter");
+
+    umbraco.BusinessLogic.User user = new umbraco.BusinessLogic.User(0);
+    
+}
+
+@foreach(string letter in letters)
+{
+    Document doc = Document.MakeNew(letter, dt, user, 1457);
+    doc.Publish(user);
+    umbraco.library.UpdateDocumentCache(doc.Id);
+    
+    <p>@letter created</p>
+}*@

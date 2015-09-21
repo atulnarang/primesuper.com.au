@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.mobile.cshtml";
+    ViewBag.BodyClass = "mobile";
+}
+
+<div class="inner">
+    <h1 class="heading-main">
+        @Model.Content.GetPropertyValue("mobilePageTitle")
+    </h1>
+</div>
+            
+@Html.Partial("~/Views/Partials/MobileHomePageScroller.cshtml")
+
+@Model.Content.GetPropertyValue("mobileContent")

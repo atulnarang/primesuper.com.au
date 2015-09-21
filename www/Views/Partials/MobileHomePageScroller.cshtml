@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+	
+<div style="width:95%;margin: 0 auto;">
+	
+@if (Model.Content.HasValue("mobilecarouselitems"))
+    {
+        var typedMutliNodeTreePicker = Model.Content.GetPropertyValue<string>("mobilecarouselitems");
+        var typedPublishedMNTPNodeList = typedMutliNodeTreePicker.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+        var typedMNTPCollection = Umbraco.TypedContent(typedPublishedMNTPNodeList).Where(i => i != null);
+        int count = 0;
+        
+        <div class="home-nav module">
+        
+        @{
+            foreach (var carouselItem in typedMNTPCollection)
+            {
+                if (carouselItem.HasValue("linkURL") || carouselItem.HasValue("bannerImage"))
+                {
+                    <div @String.Format("{0}", count == 0 ? "class=first" : string.Empty)>
+
+                        @{count++;}                        
+                         <span class="inner" style="padding-bottom: 2%;padding-top: 2%;">
+                                    <span class="heading-large" style="color: #232021;">@carouselItem.GetPropertyValue("title")</span>
+                                </span>
+                        @if (carouselItem.HasValue("linkURL"))
+                        {
+                            <a href="@carouselItem.GetPropertyValue("linkURL")" alt="@carouselItem.GetPropertyValue("title")" class="button">
+                                @if (carouselItem.HasValue("bannerImage"))
+                                {
+                                    var media = Umbraco.TypedMedia(carouselItem.GetPropertyValue("bannerImage"));
+                                    <img style="width: 100%" src="@media.GetPropertyValue("umbracoFile")" />
+                                }
+                               
+                            </a>
+                        }                        
+                    </div>
+                }
+            }
+        }        
+        </div>
+    }	
+</div>

@@ -1,0 +1,41 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    string footerLinkIds = PrimeSuper.Web.Classes.ConfigurationHelper.Config.GetProperty("footerLinksSettings").Value.ToString();
+    List<int> ids = new List<int>();
+    foreach (string id in footerLinkIds.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+    {
+        ids.Add(Int32.Parse(id));
+    }
+
+    var footerLinkItems = Umbraco.TypedContent(ids.ToArray());
+}
+
+@if (footerLinkItems.Any())
+{     
+    <div id="footerFeatures">
+        <div style="overflow: hidden; width: 100%; height: 80px;padding-top: 15px;">
+            <ul>
+                @{int index = 1;}
+                @foreach (var footerLink in footerLinkItems)
+                {
+                    var linkToNode = Umbraco.TypedContent(footerLink.GetProperty("linkTo").Value.ToString());
+                    <li class="col@(index)">
+                        <h2>
+                            <a class="footerLink" href="@linkToNode.Url">@footerLink.Name</a>
+                        </h2>
+                        <p>
+                            @footerLink.GetProperty("value").Value
+                        </p>
+                    </li>
+                    index++;
+                }
+            </ul>
+        </div>
+    </div>
+}
+<div id="footer">
+    <h2 class="displaynone">Footer
+    </h2>
+    <span class="copyright">&copy; Copyright Prime Super @DateTime.Now.Year</span>
+    @Html.Partial("~/Views/Partials/FooterNavigation.cshtml")
+</div>

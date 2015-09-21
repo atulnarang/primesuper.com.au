@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<PrimeSuper.Web.Models.PubListingViewModel>
+@{
+    var documents = Model.RelatesToFilter == null 
+        ? Model.Documents.Where(x => x.GetPropertyValue<string>("documentType").Contains(Model.DocTypeFilter)) 
+        : Model.Documents.Where(x => x.GetPropertyValue<string>("documentType").Contains(Model.DocTypeFilter) && x.GetPropertyValue<string>("documentRelatesTo").Contains(Model.RelatesToFilter));
+}
+
+<ul class="formTable">
+    <li class="header clfx">
+        <span class="icon">&nbsp;</span>
+        <span class="description">Name</span>
+        <span class="updated">Updated</span>
+        <span class="size">File Size</span>
+    </li>
+
+    @foreach (var document in documents)
+    {
+        var doc = Umbraco.TypedMedia(document.GetProperty("document").Value);
+        var icon = Umbraco.TypedMedia(document.GetProperty("icon").Value);
+		try
+		{
+			if(doc != null)
+			{ 
+				//Turn Bytes into MBytes value
+				string fileSize = Math.Round((doc.GetPropertyValue<decimal>("umbracoBytes") / 1048576), 2).ToString();
+
+				<li class="clfx">
+					<a href="@doc.GetPropertyValue("umbracoFile")" class="link clfx">
+						<span class="icon"><img src="@icon.Url" alt="Publication name" /></span>
+						<span class="description">
+							<h3>@document.GetPropertyValue("title")</h3>
+							<p>@document.GetPropertyValue("summary")</p>
+						</span>
+						<span class="updated">@DateTime.Parse(document.GetPropertyValue("date").ToString()).ToString("y")</span>
+						<span class="size">@fileSize MB</span>
+					</a>
+				</li>
+			}
+		}
+        catch (Exception ex){}
+    }
+</ul>
+

@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<PrimeSuper.Web.Models.SearchResultListItemModel>
+<li class="item">
+    <div class="details">
+        <h3><a href="@Model.Url" class="title">@Model.Name</a></h3>
+        <p>@Html.Raw(Model.Content)</p>
+    </div>
+</li>

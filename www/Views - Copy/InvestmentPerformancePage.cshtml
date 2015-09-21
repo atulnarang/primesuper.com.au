@@ -1,0 +1,189 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using System.Linq;
+@{
+    Layout = "~/Views/MasterLayout.cshtml";
+    ViewBag.BodyClass = "insideTemplate fullWidth";
+
+    var performanceTableNode = PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("PerformanceTable");
+}
+<div class="pageRow pageRowTop">
+    <div class="pageRowInner">
+        <!-- start: header -->
+        @Html.Partial("~/Views/Partials/Branding.cshtml")
+
+        <!-- start: nav -->
+        <div id="header">
+            @Html.Partial("~/Views/Partials/Navigation.cshtml")
+        </div>
+        <!-- end: nav -->
+        <!-- end: header -->
+        <!-- start: container -->
+        <div class="container">
+
+            <!-- This issue is related to the issue in the CS file -->
+            <div class="container-2">
+
+                <div class="globalBanner">
+
+                    @Html.Partial("~/Views/Partials/Breadcrumb.cshtml")
+
+                    @if (Model.Content.HasValue("mainImage"))
+                    {
+                        var mediaItem = Umbraco.TypedMedia(Model.Content.GetPropertyValue("mainImage"));
+                        <img src="@mediaItem.GetPropertyValue("umbracoFile")" alt="@mediaItem.GetPropertyValue("Name")" />
+                    }
+                    <h1>@Model.Content.GetPropertyValue("title")</h1>
+                    @if (Model.Content.HasValue("summary"))
+                    {
+                        <div class="topText">
+                            <div class="module moduleWysiwyg">
+                                <div class="moduleContent">
+                                    @Model.Content.GetPropertyValue("headerSummary")
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="bannerEdge"></div>
+
+                    @Html.Partial("~/Views/Partials/ContentControls.cshtml")
+
+                </div>
+
+                <!-- start: content -->
+                <div id="content">
+                    <div id="contentInner">
+
+                        <div class="content">
+
+                            <!-- wysiwyg -->
+
+                            <div class="wysiwyg">
+                                <div class="module moduleWysiwyg">
+                                    <div class="moduleContent">
+
+                                        @Model.Content.GetPropertyValue("mainContent")
+
+                                        <!-- begin: Investment Performance Table -->
+                                        <div id="tabs" class="lrgTabs">
+                                            <!-- begin large tabs -->
+                                            <ul>
+                                                @{
+                                                    int tabIndex = 1;
+                                                    foreach (var lrgTabs in performanceTableNode.Children)
+                                                    {
+                                                        <li><a href="#tabs-@tabIndex">@lrgTabs.Name</a></li>
+                                                        tabIndex = tabIndex + 1;
+                                                    }
+                                                }
+                                            </ul>
+                                            <!-- end large tabs -->
+                                            @{
+                                                tabIndex = 1;
+                                                int index = 0;
+                                                foreach (var lrgTabs in performanceTableNode.Children)
+                                                {
+                                                    <div id="tabs-@tabIndex" class="tab-block">
+                                                        <div id="link-tabs-@tabIndex" class="link-tabs">
+                                                            <ul>
+                                                                <li class="cufon">For:</li>
+                                                                @foreach (var linkTabs in lrgTabs.Children)
+                                                                {
+                                                                    string firstWord = linkTabs.Name.Split(' ')[0].ToLower();
+
+                                                                    <li><a href="#@(firstWord)-@(tabIndex)">@linkTabs.Name</a></li>
+                                                                }
+                                                            </ul>
+                                                            @foreach (var linkTabs in lrgTabs.Children)
+                                                            {
+                                                                string firstWord = linkTabs.Name.Split(' ')[0].ToLower();
+                                                                int itemIndex = 2; // start at 2 coz 1 has been hardcoded, which is a header row.
+                                                                <div id="@(firstWord)-@(tabIndex)">
+                                                                    <table class="tabTable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>&nbsp;</th>
+                                                                                <th class="yellowRow" colspan="4">Pre-Mixed Options</th>
+                                                                                <th class="greyRow" colspan="5">Sector Options</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr class="odd">
+                                                                                <td class="ignore">&nbsp;</td>
+                                                                                <td class="title-top">@(lrgTabs.Name == "Income Stream" ? "Balanced" : "MySuper")</td>
+                                                                                <td class="title-top">Managed Growth</td>
+                                                                                <td class="title-top">Conservative</td>
+                                                                                <td class="title-top">Alternatives</td>
+                                                                                <td class="title-top">Australian Shares</td>
+                                                                                <td class="title-top">International Shares</td>
+                                                                                <td class="title-top">Property</td>
+                                                                                <td class="title-top">Fixed Interest</td>
+                                                                                <td class="title-top">Cash</td>
+                                                                            </tr>
+                                                                            
+                                                                            @foreach(var date in linkTabs.Children)
+                                                                            {
+                                                                                if(date.DocumentTypeAlias == "PerformanceTableSuperFund" || date.DocumentTypeAlias == "PerformanceTableIncomeStream")
+                                                                                {
+                                                                                    List<Umbraco.Core.Models.IPublishedContent> list = new List<Umbraco.Core.Models.IPublishedContent>();
+                                                                                    list.Add(date);
+                                                                                    @Html.Partial("~/Views/Partials/PerformanceTableDataRow.cshtml", new PrimeSuper.Web.Models.PerformanceTableItemModel { List = list, CurrentIndex = itemIndex })
+                                                                                    itemIndex = itemIndex + list.Count() - 1;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <tr>
+                                                                                        <td class="title">@date.Name</td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                    </tr>
+                                                                                    @Html.Partial("~/Views/Partials/PerformanceTableDataRow.cshtml", new PrimeSuper.Web.Models.PerformanceTableItemModel { List = date.Children, CurrentIndex = itemIndex })
+                                                                                    itemIndex = itemIndex + (date.Children.Count() == 0 ? 1 : date.Children.Count() - 1);
+                                                                                }
+                                                                            }
+                                                                        </tbody>
+                                                                    </table>
+                                                                    @if(linkTabs.GetProperty("desktopText").HasValue)
+                                                                    {
+                                                                        @linkTabs.GetProperty("desktopText").Value
+                                                                    }
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+
+                                                            tabIndex++;
+                                                }
+                                            }
+                                        </div>
+                                        <!-- end: Investment Performance Table -->
+
+                                    </div><!-- .moduleContent -->
+                                </div><!-- .moduleWysiwyg -->
+                            </div><!-- end wysiwyg -->
+
+                        </div>
+
+                    </div>
+                    <!-- end: content-2 -->
+
+                    <span class="clear"></span>
+
+                </div>
+                <!-- end: content -->
+                <span class="clear"></span>
+            </div>
+            <!-- end: container2 -->
+
+        </div>
+        <!-- end: container -->
+    </div>
+    <!-- end: pageRowInner -->
+</div>
+<!-- end: pageRow pageRowTop -->

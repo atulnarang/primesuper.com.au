@@ -1,0 +1,61 @@
+﻿@using umbraco.MacroEngines;
+@using PrimeSuper.Web.Classes;
+@using PrimeSuper.Web.Models;
+@{
+    var query = ViewData["query"] ?? string.Empty;
+
+    Umbraco.Web.UmbracoHelper helper = new Umbraco.Web.UmbracoHelper(umbracoContext: Umbraco.Web.UmbracoContext.Current);
+
+    var results = query == string.Empty ? null : helper.TypedSearch(query.ToString());
+}
+
+    @if (results != null && results.Count() > 0)
+    {
+        ListingHelper listingHelper = new ListingHelper(results);
+        
+        <div class="moduleContent moduleSearchList">
+            <p>Your search for "<strong>@query</strong>" found <strong>@results.Count()</strong> results</p>
+
+            <ul id="searchResultsList">
+                @foreach (var i in results.Skip(listingHelper.Pager.Skip).Take(listingHelper.Pager.Take))
+                {
+                    SearchResultListItemModel listItemModel = new SearchResultListItemModel();
+                    
+                    //Forms & Pubs documents
+                    if(i.DocumentTypeAlias == "Document")
+                    {
+                        var doc = helper.TypedMedia(i.GetPropertyValue("document"));
+                        listItemModel.Url = doc.GetPropertyValue("umbracoFile").ToString();
+                        listItemModel.Name = i.Name;
+                        listItemModel.Content = listingHelper.GetTruncatedContent(i, "mainContent", "summary");
+                    }
+                    //Glossary Items
+                    else if(i.AncestorOrSelf(2).DocumentTypeAlias == "GlossaryPage")
+                    {
+                        var glossaryPage = ConfigurationHelper.GetPropertyValueNode("glossaryItem");
+                        listItemModel.Url = glossaryPage.Url + "?l=" + i.Name.ToString().Substring(0, 1);
+                        listItemModel.Name = i.Name;
+                        listItemModel.Content = listingHelper.GetTruncatedContent(i, "explanation", "");
+                    }
+                    //Standard Content items
+                    else
+                    {
+                        listItemModel.Url = i.Url;
+                        listItemModel.Name = i.Name;
+                        listItemModel.Content = listingHelper.GetTruncatedContent(i, "mainContent", "");
+                    }
+                    
+                    @Html.Partial("~/Views/Partials/SearchResultsListItem.cshtml", listItemModel);
+                }
+            </ul>
+        </div><!-- moduleSearchList -->
+
+        
+                   
+        @PaginationControls.RenderPaging(listingHelper.Pager, Int32.Parse(Umbraco.Web.UmbracoContext.Current.PageId.Value.ToString()), "query=" + query.ToString(), true)
+                
+    }
+    else
+    {
+        <p>No search results.</p>
+    }

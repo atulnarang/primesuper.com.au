@@ -1,0 +1,71 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using PrimeSuper.Web.Classes;
+@using Umbraco.Web;
+@{
+    IPublishedContent landingPage = null;
+
+    string liClass = null;
+
+    landingPage = Model.Content.AncestorsOrSelf(2).First();
+    //landingPage = CurrentPage.AncestorsOrSelf(2).First();
+
+    if (landingPage != null)
+    {
+        var listNav = landingPage.Children.Where(n => n.GetPropertyValue<bool>("displayInSecondaryNavigation") == true);
+
+        if (listNav.Any())
+        {
+    <div class="subNav">
+        <ul class="sideAccordion">
+
+            @{
+            var i = 0;
+            }
+
+            @foreach (var child in listNav)
+            {
+                var listChildNav = child.Children.Where(n => n.GetPropertyValue<bool>("displayInSecondaryNavigation") == true);
+
+                if (listChildNav.Any())
+                {
+                    liClass = "parent";
+                }
+                else
+                {
+                    liClass = null;
+                }
+                string style = "";
+                string liStyle = "";
+                if (i == listNav.Count() - 1)
+                {
+                    liClass += " lastItem";
+                    style = "background-color:transparent;";
+                    liStyle = "border-left:0px; border-right:0px; border-bottom:0px;";
+                }
+
+                <li class="@liClass" style="@liStyle">
+                    <a href="@child.Url" style="@style" >@child.GetNavigationTitle()</a>
+
+                    @if (listChildNav.Any())
+                    {
+                        <ul style="width:268px;border-bottom:0px;border-right:0px;border-left:0px;">
+
+                            @foreach (var secondChild in listChildNav)
+                            {
+                                <li><a href="@secondChild.Url">@secondChild.GetNavigationTitle()</a></li>
+                            }
+
+                        </ul>
+                    }
+
+                </li>
+                    i++;
+            }
+
+        </ul>
+    </div>
+
+    @Html.Partial("~/Views/Partials/StateSelect.cshtml")
+        }
+    }
+}

@@ -1,0 +1,122 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+
+    IPublishedContent homePage = null;
+
+    homePage = PrimeSuper.Web.Classes.ConfigurationHelper.HomePage;
+}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie11 lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie11 lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie11 lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie11 lt-ie10   "> <![endif]-->
+<!--[if IE 10]>         <html class="no-js lt-ie11 "> <![endif]-->
+<!--[if gt IE 11]><!-->
+<html class="no-js">
+ <!--<![endif]-->
+<head>
+    <title>@Html.Raw(Model.Content.GetProperty("pageTitle").HasValue ? Model.Content.GetPropertyValue("pageTitle") : homePage.GetPropertyValue("pageTitle"))</title>
+    <meta name="keywords" content="@Html.Raw(Model.Content.GetProperty("metaKeywords").HasValue ? Model.Content.GetPropertyValue("metaKeywords") : homePage.GetPropertyValue("metaKeywords"))" />
+    <meta name="description" content="@Html.Raw(Model.Content.GetProperty("metaDescription").HasValue ? Model.Content.GetPropertyValue("metaDescription") : homePage.GetPropertyValue("metaDescription"))" />
+
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" name="viewport" />
+
+    <meta name="google-site-verification" content="2S-lyl4dKTpzZHX4dUdARZ6TP8mXrA6cMQ77kZjVxeI" />
+
+
+    <link href="/Resources/desktop/img/elements/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @*<link rel='stylesheet' href='/Resources/desktop/css/style.css' media='screen' />
+    <link rel="stylesheet" href="/Resources/desktop/css/print.min.css" media="print" />*@
+    <link rel='stylesheet' href="@Html.Raw(System.Configuration.ConfigurationManager.AppSettings["Desktop.CSSFileAndPath"])&modified=1147" media='screen' />
+    <link rel="stylesheet" href="/Resources/desktop/css/print.min.css" media="print" />
+    
+    @RenderSection("HeadIncludes", false)
+
+    @Html.Raw(Model.Content.GetProperty("analyticsHead") != null && Model.Content.GetProperty("analyticsHead").HasValue ? Model.Content.GetPropertyValue("analyticsHead") : homePage.GetPropertyValue("analyticsHead"))
+</head>
+<body id="body" class="@ViewBag.BodyClass @Model.Content.GetPropertyValue("bodyCssClass")">
+    <a class="skipLinks" href="#content">Skip to content</a>
+    <a class="skipLinks" href="#accountAction">Skip to Access My Account</a>
+    <div id="page" @ViewBag.PageClass>
+        @RenderBody()
+        <div class="pageRow @ViewBag.FooterClass">
+            <div class="pageRowInner">
+                @if(ViewBag.IsMap != null)
+                {
+                    @* Map Page Footer *@
+                    @Html.Partial("~/Views/Partials/MapFooter.cshtml");
+                }
+                else
+                { 
+                    @* Standard Site Footer *@
+                    @Html.Partial("~/Views/Partials/SiteFooter.cshtml");
+                }
+                <div id="importantNotice">
+                    <h4 class="base-font">
+                        Important Notice
+                    </h4>
+                    <p>
+                        The advice contained on the Prime Super website does not take into account your
+                        particular objectives, needs or financial situation. Before making a decision regarding
+                        the acquisition or disposal of a financial product, you should assess whether the
+                        advice is appropriate to your objectives, needs or financial situation. You may
+                        wish to make this assessment yourself or seek the help of an adviser. Prime Super
+                        takes no responsibility for you acting on the information provided. Any decision
+                        that you make is at your own risk. Before acquiring a financial product you should
+                        obtain a Product Disclosure Statement (PDS) relating to that product and consider
+                        the contents of the PDS before making a decision about whether to acquire the product.
+                    </p>
+                    <p>
+                        Issued by the Trustee: Prime Super Pty Ltd ABN 81 067 241 016 AFSL No. 219723 RSE
+                        Licence No. L0000277 Prime Super ABN 60 562 335 823; RN 1000276
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Resources/desktop/js/libs/jquery-1.7.2.min.js"></script>
+    <script src="/Resources/desktop/js/libs/jquery-ui-1.8.21.custom.min.js"></script>
+    
+    @*<script src="/Resources/desktop/js/scripts.js"></script>*@
+    <script src="@System.Configuration.ConfigurationManager.AppSettings["Desktop.JSFileAndPath"]"></script>
+    
+
+    @RenderSection("FooterIncludes", false)
+    @Html.Raw(Model.Content.GetProperty("analyticsBody") != null && Model.Content.GetProperty("analyticsBody").HasValue ? Model.Content.GetPropertyValue("analyticsBody") : homePage.GetPropertyValue("analyticsBody"))
+
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('a').mouseup(function () {
+                var href = $(this).attr('href');
+                if (typeof href != 'undefined' && href != null && href != '') {
+                    var href_lower = href.toLowerCase();
+                    if (href_lower.substr(-3) == "pdf" || href_lower.substr(-3) == "xls" || href_lower.substr(-3) == "doc" ||
+                        href_lower.substr(-3) == "mp3" || href_lower.substr(-3) == "mp4" || href_lower.substr(-3) == "flv" ||
+                        href_lower.substr(-3) == "txt" || href_lower.substr(-3) == "csv" || href_lower.substr(-3) == "zip") {
+                        ga('send', 'event', 'Downloads', href_lower.substr(-3), href);
+                    }
+                    if (href_lower.length >= 4 && href_lower.substr(0, 4) == "http") {
+                        var domain = document.domain.replace("www.", '');
+                        if (href_lower.indexOf(domain) == -1) {
+                            href_lower = href_lower.replace("http://", '');
+                            href_lower = href_lower.replace("https://", '');
+                            ga('send', 'event', 'Outbound Traffic', 'Click', href_lower);
+                        }
+                    } else if (href_lower.indexOf('mailto:') != -1) {
+                        jQuery(this).click(function () {
+                            var mailLink = href_lower.replace(/^mailto\:/i, '');
+                            ga('send', 'event', 'Email', 'Click', mailLink);
+                        });
+                    }
+                }
+            });
+        });
+	</script>
+</body>
+</html>

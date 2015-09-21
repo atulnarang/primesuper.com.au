@@ -1,0 +1,141 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "~/Views/MasterLayout.cshtml";
+    ViewBag.BodyClass = "insideTemplate fullWidth";
+    
+    var letters = Model.Content.Children;
+    
+    string currentLetter = UmbracoContext.HttpContext.Request.QueryString["l"] ?? "A";
+
+    var letterFolder = Model.Content.Children.FirstOrDefault(x => x.Name == currentLetter);
+    var glossaryItems = letterFolder.Children;
+
+    PrimeSuper.Web.Classes.ListingHelper listingHelper = new PrimeSuper.Web.Classes.ListingHelper(glossaryItems);
+}
+<div class="pageRow pageRowTop">
+    <div class="pageRowInner">
+        <!-- start: header -->
+        @Html.Partial("~/Views/Partials/Branding.cshtml")
+
+        <!-- start: nav -->
+        <div id="header">
+            @Html.Partial("~/Views/Partials/Navigation.cshtml")
+        </div>
+        <!-- end: nav -->
+        <!-- end: header -->
+        <!-- start: container -->
+        <div class="container">
+
+            <!-- This issue is related to the issue in the CS file -->
+            <div class="container-2">
+
+                <div class="globalBanner">
+
+                    @*@Html.Partial("~/Views/Partials/Breadcrumb.cshtml")
+
+                    @if (Model.Content.HasValue("mainImage"))
+                    {
+                        var mediaItem = Umbraco.TypedMedia(Model.Content.GetPropertyValue("mainImage"));
+                        <img src="@mediaItem.GetPropertyValue("umbracoFile")" alt="@mediaItem.GetPropertyValue("Name")" />
+                    }*@
+                    <h1>@Model.Content.GetPropertyValue("title")</h1>
+                    @if (Model.Content.HasValue("summary"))
+                    {
+                        <div class="topText">
+                            <div class="module moduleWysiwyg">
+                                <div class="moduleContent">
+                                    @Model.Content.GetPropertyValue("headerSummary")
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="bannerEdge"></div>
+
+                    @Html.Partial("~/Views/Partials/ContentControls.cshtml")
+
+                </div>
+
+                <!-- start: content -->
+                <div id="content">
+                    <div id="contentInner">
+
+                        <div class="content">
+
+                            <!-- wysiwyg -->
+
+                            <div class="wysiwyg">
+                                <div class="module moduleWysiwyg">
+                                    <div class="moduleContent">
+
+                                        @Model.Content.GetPropertyValue("mainContent")
+
+                                    </div><!-- .moduleContent -->
+                                </div><!-- .moduleWysiwyg -->
+
+                                <!-- begin Glossary Listing -->
+                                <div>
+                                    <div class="module moduleControls moduleGlossaryList">
+                                        <div class="paging">
+                                            <h4>Choose a letter:</h4>
+                                            <ul class="clfx">
+                                                @foreach(var l in letters)
+                                                {
+                                                    string letter = l.Name;
+                                                    <li @(letter.Equals(currentLetter) ? "class=on" : "")>
+                                                        <a href="@(Model.Content.Url + "?l=" + letter)">@letter</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        <div class="header">
+                                            <span>Term</span>
+                                            <span>Explanation</span>
+                                        </div>
+                                        <ul>
+                                            @if (glossaryItems.Any())
+                                            {
+                                                foreach(var gItem in glossaryItems.Skip(listingHelper.Pager.Skip).Take(listingHelper.Pager.Take))
+                                                {
+                                                    string name = gItem.GetProperty("value").HasValue ? gItem.GetProperty("value").Value.ToString() : gItem.Name;
+                                                    <li class="item">
+                                                        <h4>@name</h4>
+                                                        <div class="details">
+                                                            @Html.Raw(gItem.GetPropertyValue("explanation"))
+                                                        </div>
+                                                    </li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li class="empty">No items to display.</li>
+                                            }
+                                        </ul>
+
+                                        @PaginationControls.RenderPaging(listingHelper.Pager, Model.Content.Id, "l=" + currentLetter, false)
+
+                                    </div>
+                                </div>
+                                <!-- end Glossary Listing -->
+                            </div><!-- end wysiwyg -->
+
+                        </div>
+
+                    </div>
+                    <!-- end: content-2 -->
+
+                    <span class="clear"></span>
+
+                </div>
+                <!-- end: content -->
+
+                <span class="clear"></span>
+            </div>
+            <!-- end: container2 -->
+
+        </div>
+        <!-- end: container -->
+    </div>
+    <!-- end: pageRowInner -->
+</div>
+<!-- end: pageRow pageRowTop -->
+

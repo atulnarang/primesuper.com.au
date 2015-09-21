@@ -1,0 +1,15 @@
+﻿@model MapManager.Models.UserSelectModel
+
+@if (ViewBag.DisplayDropdown)
+{
+    <script type="text/javascript">
+        $(function () {
+            $('#userSwitch').change(function () {
+                var userId = encodeURIComponent($(this).val());
+                window.location.href = '/MapManager/Account/UserSwitch?userId=' + userId;
+            });
+        });
+    </script>
+
+    @Html.DropDownList("userSwitch", (IEnumerable<SelectListItem>)Model.Users)
+}

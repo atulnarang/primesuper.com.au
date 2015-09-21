@@ -1,0 +1,138 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.cshtml";
+	
+	string file = "";
+    
+	if(Model.Content.HasValue("bannerImage"))
+	{		   
+	    var image = Umbraco.TypedMedia(Model.Content.GetPropertyValue("bannerImage"));
+		file = image != null ? image.GetPropertyValue<string>("umbracoFile") : null;
+	}
+    else
+    {
+        ViewBag.BodyClass = "insideTemplate";
+    }
+}
+<div class="landing">
+<div class="pageRow pageRowTop">
+    <div class="pageRowInner">
+        <!-- start: header -->
+        @Html.Partial("~/Views/Partials/Branding.cshtml")
+
+        <!-- start: nav -->
+        <div id="header">
+            @Html.Partial("~/Views/Partials/Navigation.cshtml")
+        </div>
+        <!-- end: nav -->
+
+        <!-- end: header -->
+        <!-- start: container -->
+        <div class="container">
+
+            <!-- This issue is related to the issue in the CS file -->
+            <div class="container-2">
+
+                <div class="globalBanner">
+					@if(!String.IsNullOrEmpty(file))
+                    {
+                        <img src="@file"/>
+                    }                    
+					<h1>@Model.Content.GetPropertyValue("bannerHeading")</h1>
+					
+                    <div class="bannerEdge"></div>
+
+                    @Html.Partial("~/Views/Partials/ContentControls.cshtml")
+
+                </div>
+
+                <!-- start: content -->
+                <div id="content">
+                    <div id="contentInner">
+
+                        <div class="content">
+
+                            <!-- wysiwyg -->
+
+                            <div class="wysiwyg">
+
+                                <div class="module moduleWysiwyg">
+                                    <div class="moduleContent">
+                                        
+                                        @Model.Content.GetPropertyValue("mainContent")
+                                
+                                    </div><!--moduleContent-->
+                                </div><!--moduleWysiwyg-->
+                                @{
+                                    string thumbnailImage = "";
+
+                                    var typedMutliNodeTreePicker = Model.Content.GetPropertyValue<string>("summaryLinks");
+                                    var typedPublishedMNTPNodeList = typedMutliNodeTreePicker.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                                    var typedMNTPCollection = Umbraco.TypedContent(typedPublishedMNTPNodeList).Where(i => i != null);                                    
+                                    int count = 1;
+                                    <ul class="tiles clfx">
+
+                                       @foreach (var summaryLinkItem in typedMNTPCollection)
+                                        {
+                                            if (summaryLinkItem.HasValue("thumbnailImage"))
+                                            {
+                                                var image = Umbraco.TypedMedia(summaryLinkItem.GetPropertyValue("thumbnailImage"));
+                                                thumbnailImage = image.GetPropertyValue<string>("umbracoFile");
+                                            }
+
+                                            <li @(count % 2 != 0 ? "class=first" : "")>
+                                                @if(!String.IsNullOrEmpty(thumbnailImage))
+                                                { 
+                                                    <div id="childImageDiv" class="imgContent">
+                                                        <img src="@thumbnailImage" id="imgLanding" />
+                                                    </div>
+                                                }
+                                                <div class="textContent">
+                                                    <h2><a href="@summaryLinkItem.Url">@(summaryLinkItem.GetPropertyValue("navigationTitle") != "" ? summaryLinkItem.GetPropertyValue("navigationTitle") : summaryLinkItem.Name)</a></h2>
+                                                    <p>@summaryLinkItem.GetPropertyValue("summary")</p>
+                                                    <a href="@summaryLinkItem.Url">Show more...</a>
+                                                </div>
+                                            </li>
+                                           
+                                           count++;
+                                        }
+
+                                    </ul>
+                                }
+
+
+                            </div>
+
+
+
+                            <!-- end wysiwyg -->
+
+                        </div>
+                                                
+                    </div>
+                    <!-- end: content-2 -->
+
+                    <span class="clear"></span>
+
+                </div>
+                <!-- end: content -->
+
+                <div id="sideContent">
+                    <!-- start: sideContent -->
+                    @Html.Partial("~/Views/Partials/SideNavigation.cshtml")
+                  @*  @Html.Partial("~/Views/Partials/SearchBox.cshtml", new PrimeSuper.Web.Models.SearchBoxViewModel() { IsSideContent = true })*@
+                    @Html.Partial("~/Views/Partials/RegionalManagers.cshtml")
+                    <!-- end: sideContent -->
+                </div>
+                <span class="clear"></span>
+            </div>
+            <!-- end: container2 -->
+
+        </div>
+        <!-- end: container -->
+    </div>
+    <!-- end: pageRowInner -->
+</div>
+<!-- end: pageRow pageRowTop -->
+
+</div>

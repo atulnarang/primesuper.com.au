@@ -1,0 +1,38 @@
+﻿@model MapManager.Models.ManagerModel
+
+@{
+    ViewBag.Title = "Map Manager";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.autocomplete.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Content/jquery.autocomplete.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {
+        $('#NextPlace').autocomplete('/MapManager/Postcode/Suggest', { autoFill: true });
+    });
+</script>
+
+<h2>Hi @ViewBag.Username</h2>
+
+Would you like to:<br />
+@Html.ActionLink("Add a new message", "Create")<br />
+@Html.ActionLink("See previous messages", "List")<br />
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset class="next-location">
+        <div class="editor-label">
+            Your next destination is:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NextPlace)
+            @Html.ValidationMessageFor(model => model.NextPlace)
+        </div>
+
+        <p>
+            <input type="submit" value="Update" />
+        </p>
+    </fieldset>
+}

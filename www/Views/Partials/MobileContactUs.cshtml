@@ -1,0 +1,47 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+	
+@{
+	@*Select visible children *@
+    var items = Model.Content.Children.Where("Visible").Where("displayInMobile == true");	
+		
+	@*If any items are returned, render a list *@
+    if (items.Any())
+    {
+				
+	<div class="module module-contact" style="width:100%;padding:0px;">
+        
+        <ul class="tabs tabs-primary" style="border-top:1px solid #ccc;">
+            <li >
+                <span>
+                    <a href="#general">General Enquiries</a>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <a href="#regional">Contact a Regional Manager</a>
+                </span>
+            </li>
+        </ul>  
+        <div style="padding-left: 15px; padding-right: 15px;">
+            @foreach (var item in items)
+            {
+                if (item.Id == PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("generalEnquiriesItem").Id)
+                {
+
+                <div id="general">
+                    @item.GetPropertyValue("mobileContent")
+                </div>
+            }
+
+            if (item.Id == PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("regionalManagerItem").Id)
+            {
+
+                <div id="regional">
+                    @item.GetPropertyValue("mobileContent")
+                </div>
+            }
+        }
+        </div>   
+    </div>
+    }
+}

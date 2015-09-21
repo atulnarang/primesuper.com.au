@@ -1,0 +1,32 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var joinPrimeSuperPage = PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("joinPrimeSuperPage");
+}
+<div class="brandContainer">
+    <a class="mainLogo" href="/">
+        <h1>Prime Super. Part of your community.</h1>
+    </a>
+
+    <ul id="accountAction">
+        @if (joinPrimeSuperPage != null)
+        { 
+            <li><a class="joinPrime" href="@joinPrimeSuperPage.Url">@joinPrimeSuperPage.GetProperty("navigationTitle").Value</a></li>
+        }
+        <li id="loginLink">
+            <a class="accessAccount" href="#">Access my account</a>
+            <ul id="loginBox" style="left:-12px;">
+                <li>
+                    <a style="padding-top:16px;height: 37px;" href="https://member.aas.com.au/login/PR" class="cufon">Individual Members
+                    </a>
+                </li>
+                <li class="last">
+                    <a href="https://employer.aas.com.au/login/PR" class="cufon">Employers &
+                            <br />
+                        Self-employed
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</div>

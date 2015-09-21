@@ -1,0 +1,95 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "~/Views/MasterLayout.cshtml";
+
+    var parsedQuery = Request.QueryString["query"] ?? string.Empty;
+}
+
+
+<div class="pageRow pageRowTop">
+    <div class="pageRowInner">
+        <!-- start: header -->
+        @Html.Partial("~/Views/Partials/Branding.cshtml")
+
+        <!-- start: nav -->
+        <div id="header">
+            @Html.Partial("~/Views/Partials/Navigation.cshtml")
+        </div>
+        <!-- end: nav -->
+        <!-- end: header -->
+        <!-- start: container -->
+        <div class="container">
+
+            <!-- This issue is related to the issue in the CS file -->
+            <div class="container-2">
+
+                <div class="globalBanner">
+
+                    <h1>@Model.Content.Name</h1>
+
+                    <div class="bannerEdge"></div>
+
+                    @Html.Partial("~/Views/Partials/ContentControls.cshtml")
+
+                </div>
+
+                <!-- start: content -->
+                <div id="content">
+                    <div id="contentInner">
+
+                        <div class="content">
+
+                            <!-- wysiwyg -->
+
+                            <div class="wysiwyg">
+                                <div class="module moduleSearch moduleSearchList">
+
+                                    <!--Begin site search-->
+                                    <div class="moduleHeader">
+                                        <div class="articleSearchForm">
+                                            <ul class="controls">
+                                                <li class="control select">
+                                                  @*  @Html.Partial("~/Views/Partials/SearchBox.cshtml", new PrimeSuper.Web.Models.SearchBoxViewModel() { IsSideContent = false })*@
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--End site search-->
+                                    <!-- Suggestions (Literal) -->
+                                    @Html.Partial("~/Views/Partials/SearchResultsList.cshtml", new ViewDataDictionary { { "query", parsedQuery.ToString() } })
+
+
+                                </div>
+                                    </div><!-- module -->
+                                    <!-- end wysiwyg -->
+
+                                </div>
+
+                    </div>
+                    <!-- end: content-2 -->
+
+                    <span class="clear"></span>
+
+                </div>
+                <!-- end: content -->
+
+                <div id="sideContent">
+                    <!-- start: sideContent -->
+
+                  @*  @Html.Partial("~/Views/Partials/SearchBox.cshtml", new PrimeSuper.Web.Models.SearchBoxViewModel() { IsSideContent = true })*@
+                   
+                    @Html.Partial("~/Views/Partials/SideNavigation.cshtml")
+                    @*@Html.Partial("~/Views/Partials/StateSelect.cshtml")
+                    @Html.Partial("~/Views/Partials/RegionalManagers.cshtml")*@
+                    <!-- end: sideContent -->
+                </div>
+                <span class="clear"></span>
+            </div>
+            <!-- end: container2 -->
+
+        </div>
+        <!-- end: container -->
+    </div>
+    <!-- end: pageRowInner -->
+</div>
+<!-- end: pageRow pageRowTop -->

@@ -1,0 +1,118 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using MapManager.Library;
+@using System.Data;
+@using PrimeSuper.Web.Classes;
+@{
+    System.Collections.Generic.Dictionary<Manager, TripMarker> markers = Utilities.getLatestMarkers();
+
+    var map = ConfigurationHelper.GetPropertyValueNode("mapPage");
+
+    //We'll default the page back to home page if the map page cannot be found.
+    map = map == null ? ConfigurationHelper.HomePage : map;
+}
+
+<div class="section ausMapSelect">
+    <div class="content" style="height:350px">
+        <ul id="ausMap" style="width:271px;">
+            @foreach (var marker in markers)
+            {
+
+                <li class="@marker.Key.uniqueName">
+                    <a href="@Umbraco.NiceUrl(map.Id)">
+                        <span class="image">
+                            <img src="@marker.Key.ImagePathHomepage?width=71&height=60&mode=crop" alt="" />
+                        </span>
+                        
+                        <div style="height: 1px;width:90%;margin-top:80px;margin-left: auto;margin-right: auto;background-color: #d4d4d4;"></div>
+                        <h2 style="font-size: 18px;line-height: 25px;" class="cufon_light ManagerMessage">
+                            &ldquo;@marker.Value.Message&rdquo;
+                        </h2>
+                       @* <p>@marker.Key.FirstName  @marker.Key.LastName, @marker.Key.RegionLong</p>*@
+                      @*  <span class="link">Find a Regional Manager near you</span>*@
+                    </a>
+                </li>
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+            @*
+                                <li class="wa"><a href="@Umbraco.NiceUrl(map.Id)">
+                                <span class="image">
+                                    <img src="/Resources/desktop/img/misc/managers/wayne.jpg" alt="" /></span>
+                                <h2 class="cufon_light">&ldquo;@(markers.ContainsKey("ww") ? markers["ww"].Message : "")&rdquo;</h2>
+                                <p>Wayne Wright, Southern QLD, North Eastern NSW &amp; NT</p>
+                                <span class="link">Find a Regional Manager near you</span>
+                            </a>
+                            </li>
+                            <li class="nt"><a href="@Umbraco.NiceUrl(map.Id)">
+                    <span class="image">
+                        <img src="/Resources/desktop/img/misc/managers/radek.jpg" alt="" />
+                    </span>
+                    <h2 class="cufon_light">&ldquo;@(markers.ContainsKey("rk") ? markers["rk"].Message : "")&rdquo;</h2>
+                    <p>Radek Kotlarczyk, WA & SA</p>
+                    <span class="link">Find a Regional Manager near you</span>
+                </a></li>
+                            <li class="nsw"><a href="@Umbraco.NiceUrl(map.Id)">
+                    <span class="image">
+                        <img src="/Resources/desktop/img/misc/managers/karen.jpg" alt="" />
+                    </span>
+                    <h2 class="cufon_light">&ldquo;@(markers.ContainsKey("kh") ? markers["kh"].Message : "")&rdquo;</h2>
+                    <p>Karen Hyland, South-East QLD</p>
+                    <span class="link">Find a Regional Manager near you</span>
+                </a>
+                            </li>
+                            <li class="vic"><a href="@Umbraco.NiceUrl(map.Id)">
+                    <span class="image">
+                        <img src="/Resources/desktop/img/misc/managers/geoff.jpg" alt="" />
+                    </span>
+                    <h2 class="cufon_light">&ldquo;@(markers.ContainsKey("gh") ? markers["gh"].Message : "")&rdquo;</h2>
+                    <p>Geoff Higgins, Central NSW</p>
+                    <span class="link">Find a Regional Manager near you</span>
+                </a></li>
+                            <li class="sa"><a href="@Umbraco.NiceUrl(map.Id)">
+                    <span class="image">
+                        <img src="/Resources/desktop/img/misc/managers/scott.jpg" alt="" />
+                    </span>
+                    <h2 class="cufon_light">&ldquo;@(markers.ContainsKey("sb") ? markers["sb"].Message : "")&rdquo;</h2>
+                    <p>Scott Boyle, Southern NSW</p>
+                    <span class="link">Find a Regional Manager near you</span>
+                </a></li>
+                            <li class="tas"><a href="@Umbraco.NiceUrl(map.Id)">
+                    <span class="image right">
+                        <img src="/Resources/desktop/img/misc/managers/rod.jpg" alt="" />
+                    </span>
+                    <h2 class="cufon_light">&ldquo;@(markers.ContainsKey("rs") ? markers["rs"].Message : "")&rdquo;</h2>
+                    <p>Rod Stewart, VIC &amp; TAS</p>
+                    <span class="link">Find a Regional Manager near you</span>
+                </a>
+                            </li>
+                            <li class="eddie"><a href="@Umbraco.NiceUrl(map.Id)">
+                    <span class="image right">
+                        <img src="/Resources/desktop/img/misc/managers/eddie.jpg" alt="" />
+                    </span>
+                    <h2 class="cufon_light">&ldquo;@(markers.ContainsKey("ei") ? markers["ei"].Message : "")&rdquo;</h2>
+                    <p>Eddie Isaac</p>
+                    <span class="link">Find a Regional Manager near you</span>
+                </a>
+                            </li>
+                            <li class="michael"><a href="@Umbraco.NiceUrl(map.Id)">
+                    <span class="image right">
+                        <img src="/Resources/desktop/img/misc/managers/michael.jpg" alt="" />
+                    </span>
+                    <h2 class="cufon_light">&ldquo;@(markers.ContainsKey("mh") ? markers["mh"].Message : "")&rdquo;</h2>
+                    <p>Michael Hawthorn</p>
+                    <span class="link">Find a Regional Manager near you</span>
+                </a>
+                            </li>*@
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@*Render the sitemap by passing the root node to the traverse helper*@
+@Traverse(CurrentPage.AncestorsOrSelf(1).First())
+
+@*Helper method to travers through all descendants*@
+@helper Traverse(dynamic node)
+{
+    @*Select visible children *@
+    var sideItems = node.Children.Where("Visible").Where("displayInMobile == true").Where("displayInMobileSideNavigation == true");
+
+    @*If any items are returned, render a list *@
+    if (sideItems.Any())
+    {
+        <li class="site-navigation nav-drop">
+            <a href="#">
+                <span>Site navigation</span>
+            </a>
+            <ul class="sideAccordian">
+            @foreach (var sideItem in sideItems)
+		    {
+                <li>
+				    <a href="@sideItem.Url">@PrimeSuper.Web.Classes.Extensions.GetNavigationTitle(sideItem, true)</a>
+                    
+                    @* Why are we running the Traverse function again? *@	
+				    @*Run the traverse helper again *@
+				    @*@Traverse(sideItem)*@
+			    </li>
+		    }
+            </ul>
+        </li>        
+    }
+}

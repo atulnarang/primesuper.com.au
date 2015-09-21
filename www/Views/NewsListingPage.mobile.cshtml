@@ -1,0 +1,69 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.mobile.cshtml";
+    ViewBag.BodyClass = "mobile";
+
+    int currentId = CurrentPage.Id;
+}
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")
+
+<div>
+
+    <div class="inner">
+        <h1 class="heading-main">@(@Model.Content.GetPropertyValue("mobilePageTitle")!= "" ? @Model.Content.GetPropertyValue("mobilePageTitle") : @Model.Content.GetPropertyValue("title"))</h1>    
+    </div>
+
+    @{
+        var postDate = "";
+
+        var category = Model.Content.GetPropertyValue<string>("newsCategory");
+
+        var listChildren = Model.Content.Children.Where("Visible");
+
+        PrimeSuper.Web.Classes.ListingHelper listingHelper = new PrimeSuper.Web.Classes.ListingHelper(listChildren);
+
+        foreach (var child in listChildren.Skip(listingHelper.Pager.Skip).Take(listingHelper.Pager.Take))
+        {
+            if (child.HasValue("date"))
+            {
+                postDate = umbraco.library.FormatDateTime(child.GetPropertyValue("date").ToString(), "d MMMM yyyy");
+            }
+
+            if(child.HasValue("category"))
+            {
+                var childCategory = child.GetPropertyValue<string>("newsCategory");
+
+                if(childCategory == @category)
+                {
+                    <div class="module listing">
+                        <a class="inner" href="@child.Url">
+                            <span class="date">@postDate</span>
+                            <h2 class="heading-large">@child.GetPropertyValue("title")</h2>
+                            <p>
+                                @child.GetPropertyValue("summary")
+                            </p>
+                        </a>
+                    </div>
+                }
+            }
+            else
+            {
+                    <div class="module listing">
+                        <a class="inner" href="@child.Url">
+                            <span class="date">@postDate</span>
+                            <h2 class="heading-large">@child.GetPropertyValue("title")</h2>
+                            <p>
+                                @child.GetPropertyValue("summary")
+                            </p>
+                        </a>
+                    </div>
+            }
+        }
+
+        @PaginationControls.RenderPaging(listingHelper.Pager, Model.Content.Id, "", true)
+    }
+
+</div>
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")

@@ -1,0 +1,73 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<PrimeSuper.Web.Models.PerformanceTableItemMobileModel>
+<div id="@Model.AncName" class="data-row">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <span>Pre-Mixed Options</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @if(Model.Item.DocumentTypeAlias == "PerformanceTableSuperFund")
+                {
+                    <td><span>MySuper</span></td>
+                    <td>@Model.Item.GetPropertyValue("mySuper")</td>
+                }
+                else
+                {
+                    <td><span>Balanced</span></td>
+                    <td>@Model.Item.GetPropertyValue("balanced")</td>
+                }
+            </tr>
+            <tr>
+                <td><span>Managed Growth</span></td>
+                <td>@Model.Item.GetPropertyValue("managedGrowth")</td>
+            </tr>
+            <tr>
+                <td><span>Conservative</span></td>
+                <td>@Model.Item.GetPropertyValue("conservative")</td>
+            </tr>
+            <tr>
+                <td><span>Fixed Interest</span></td>
+                <td>@Model.Item.GetPropertyValue("fixedInterest")</td>
+            </tr>
+            <tr>
+                <td>Alternatives</td>
+                <td>@Model.Item.GetPropertyValue("alternatives")</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <span>Sector Options</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span>Australian Shares</span></td>
+                <td><span>@Model.Item.GetPropertyValue("australianShares")</span></td>
+            </tr>
+            <tr>
+                <td><span>International Shares</span></td>
+                <td>@Model.Item.GetPropertyValue("internationalShares")</td>
+            </tr>
+            <tr>
+                <td><span>Property</span></td>
+                <td>@Model.Item.GetPropertyValue("property")</td>
+            </tr>
+            <tr>
+                <td><span>Fixed Interest</span></td>
+                <td>@Model.Item.GetPropertyValue("fixedInterest")</td>
+            </tr>
+            <tr>
+                <td><span>Cash</span></td>
+                <td>@Model.Item.GetPropertyValue("cash")</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

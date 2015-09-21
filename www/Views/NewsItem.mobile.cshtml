@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.cshtml";
+}
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")
+
+<div class="inner">
+    <h1 class="heading-main">News Centre</h1>
+</div>
+
+<div class="module listing">
+
+    <div class="inner">
+        <span class="date">@umbraco.library.FormatDateTime(Model.Content.GetPropertyValue("date").ToString(), "d MMMM yyyy")</span>
+        <h2 class="heading-large">@Model.Content.GetPropertyValue("title")</h2>
+
+        <p>@Model.Content.GetPropertyValue("mainContent")</p>
+
+    </div>
+
+</div>
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")

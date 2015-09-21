@@ -1,0 +1,86 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.mobile.cshtml";
+    ViewBag.BodyClass = "mobile";
+
+    int currentId = CurrentPage.Id;
+
+    string test = Model.Content.GetPropertyValue<string>("mobileContent");
+}
+@if (CurrentPage.Name != "404")
+{
+    @Html.Partial("~/Views/Partials/MobileBack.cshtml")
+}
+
+<div class="inner">
+    <h1 class="heading-main">@(@Model.Content.GetPropertyValue("mobilePageTitle") != "" ? @Model.Content.GetPropertyValue("mobilePageTitle") : @Model.Content.GetPropertyValue("title"))</h1>
+</div>
+
+
+<div class="module moduleWysiwyg listing">
+    <div class="inner" style="padding-left: 12px; padding-right: 12px;">
+
+        @* allows for main content to be used if no mobile content entered. ruled to be left out and maybe implemented in future deployments.
+            @(@Model.Content.GetPropertyValue<string>("mobileContent") != "" ? @Model.Content.GetPropertyValue("mobileContent") : @Model.Content.GetPropertyValue("mainContent"))*@
+
+        @Model.Content.GetPropertyValue("mobileContent")
+
+        @{
+            if (currentId == PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("sitemapItem").Id)
+            {
+            @Html.Partial("~/Views/Partials/SitemapMobile.cshtml")
+            }
+        }
+
+    </div>
+</div>
+
+
+
+
+@if (Model.Content.Children.Any(n => n.DocumentTypeAlias == "SubContent"))
+{
+    var subContentContainer = Model.Content.Children.FirstOrDefault(n => n.DocumentTypeAlias == "SubContent");
+    if (subContentContainer != null && (subContentContainer.Children.Any(n => n.GetPropertyValue<bool>("displayInMobile") == true) || subContentContainer.Children.FirstOrDefault(n => n.DocumentTypeAlias == "ContentAccordian").Children.Where(cn => cn != null).Any(cn => cn.GetPropertyValue<bool>("displayInMobile") == true)))
+    {
+    <!-- begin sub content section -->
+        foreach (var subContentNode in subContentContainer.Children)
+        {
+            if (subContentNode.DocumentTypeAlias == "ContentAccordian")
+            {
+    <div class="subContent">
+        <ul class="module accordion wysiwyg">
+            @foreach (var accordianContent in subContentNode.Children.Where(acn => acn.GetPropertyValue<bool>("displayInMobile")))
+            {
+                <li class="accordion-wrapper">
+                    <a href="#">
+                        @accordianContent.GetPropertyValue("mobilePageTitle")
+                    </a>
+                    <div class="accordion-content">
+                        @accordianContent.GetPropertyValue("mobileContent")
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+            }
+
+            if (subContentNode.DocumentTypeAlias == "ContentPage" && subContentNode.GetPropertyValue<bool>("displayInMobile"))
+            {
+    <div class="module moduleWysiwyg listing">
+        <div class="inner">
+            <h2>@subContentNode.GetPropertyValue("mobilePageTitle")</h2>
+            @subContentNode.GetPropertyValue("mobileContent")
+        </div>
+    </div>
+            }
+        }
+    <!-- end sub content section -->
+    }
+}
+
+<div class="backBottom">
+
+    @Html.Partial("~/Views/Partials/MobileBack.cshtml")
+</div>
+

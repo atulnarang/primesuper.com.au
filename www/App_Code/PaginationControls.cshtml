@@ -1,0 +1,42 @@
+﻿@using umbraco
+
+@helper RenderPaging(PrimeSuper.Web.Classes.Paging paging, int currentId, string searchQuery, bool ShowPages)
+{
+    <div class="moduleControls">
+
+        @if (ShowPages)
+        {
+            <div class="paging">
+                <h4>Pages:</h4>
+                <ul>
+                    @for (int i = 1; i <= paging.TotalPages; i++)
+                    {
+                        if (paging.CurrentPage == i)
+                        {
+                            <li class="on"><a>@i</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@library.NiceUrl(currentId)?@(String.IsNullOrEmpty(searchQuery) ? "" : searchQuery + "&")page=@i">@i&nbsp;</a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        }
+
+        @if (paging.TotalPages > 1)
+        {
+            <ul class="buttons">
+                @* Previous button *@
+                <li class="previous @(paging.PreviousPage == 0 ? "disabled" : "")">
+                    <a href="@library.NiceUrl(currentId)?@(String.IsNullOrEmpty(searchQuery) ? "" : searchQuery + "&")page=@paging.PreviousPage"><span></span></a>
+                </li>
+
+                @* Next button *@
+                <li class="next @(paging.NextPage > paging.TotalPages ? "disabled" : "")">
+                    <a href="@library.NiceUrl(currentId)?@(String.IsNullOrEmpty(searchQuery) ? "" : searchQuery + "&")page=@paging.NextPage"><span></span></a>
+                </li>
+            </ul>
+        }
+    </div><!-- .moduleControls -->
+}

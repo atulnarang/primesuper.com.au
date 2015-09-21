@@ -1,0 +1,40 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using PrimeSuper.Web.Classes;
+
+@{
+    IPublishedContent landingPage = null;
+
+    landingPage = CurrentPage.AncestorsOrSelf(2).First();
+
+    if (landingPage != null)
+    {
+        var listNav = landingPage.Children.Where("Visible").Where("displayInMobile == true").Where("displayInMobileSideNavigation == true");
+        
+        <ul class="module accordion accordion-landing">
+
+            @foreach (var child in listNav)
+            {
+                var listChildNav = child.Children.Where("Visible").Where("displayInMobile == true").Where("displayInMobileSideNavigation == true");
+
+                <li class="accordion-wrapper @child.UrlName">
+                    <span></span>
+                    <a href="@child.Url">@child.GetNavigationTitle(true)</a>
+
+                    @if (listChildNav.Any())
+                    {
+                        <ul class="accordion-content">
+
+                            @foreach (var secondChild in listChildNav)
+                            {
+                                <li><a href="@secondChild.Url">@secondChild.GetNavigationTitle(true)</a></li>
+                            }
+
+                        </ul>
+                    }
+
+                </li>
+            }
+
+        </ul>
+    }
+}

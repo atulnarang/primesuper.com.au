@@ -1,0 +1,51 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<div class="pageRowInner1">
+    <!-- start: footer features -->
+    <div class="featuresWrapper1">
+        <div id="footerFeatures1">
+            <ul style="width: 800px; margin:0 auto;">
+                <li class="col1">
+
+
+
+
+                    <!-- begin : Standard Item Selector -->
+                    <div>
+
+
+                        <div class="module moduleWysiwyg">
+                            <div class="moduleContent">
+
+
+                                <h2>Prime Super Seminars</h2>
+                                <p>Our seminars are held regularly</p>
+                                <a href="@PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("generalEnquiriesItem").Url"><img src="/Resources/desktop/img/buttons/contact_us_map.png" /></a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end : Standard Item Selector -->
+
+
+
+
+
+
+
+                </li>
+                <li style="margin-left:73px;" class="col2">
+                    <h2>
+                        @String.Format("{0:0,0}", MapManager.Library.Utilities.getNumberTownsVisited() + 20 + 17)
+                        towns visited
+                    </h2>
+                    <p>
+                        Have we been to yours?
+                    </p>
+                    <a href="@PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("regionalManagerItem").Url"><img src="/Resources/desktop/img/buttons/contact_us_visit_map.png" /></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end: footer features -->
+</div>

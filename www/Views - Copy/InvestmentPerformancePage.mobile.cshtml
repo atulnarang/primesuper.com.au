@@ -1,0 +1,122 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using System.Linq;
+@{
+    Layout = "~/Views/MasterLayout.mobile.cshtml";
+
+    var performanceTableNode = PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("PerformanceTable");
+    
+    int index1 = 1;
+    int index2 = 1;
+    int index3 = 1;
+}
+
+
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")
+<!-- begin Content -->
+<div>
+    <div class="inner">
+        <h1 class="heading-main">@(@Model.Content.GetPropertyValue("mobilePageTitle") != "" ? @Model.Content.GetPropertyValue("mobilePageTitle") : @Model.Content.GetPropertyValue("title"))</h1>
+    </div>
+
+   <div class="module moduleWysiwyg listing">
+        <div class="inner">
+            @Model.Content.GetPropertyValue("mobileContent")
+
+            @{
+                if (Model.Content.Id == PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("sitemapItem").Id)
+                {
+                    @Html.Partial("~/Views/Partials/SitemapMobile.cshtml")
+                }
+            }
+       </div>
+    </div>
+</div>
+<!-- end Content -->
+
+<!-- begin Performance Table -->
+<div>
+    
+            <div class="investment-options">
+                <ul class="tabs tabs-primary">
+                    @foreach (var lrgTabs in performanceTableNode.Children)
+                    {
+                        string firstWord = lrgTabs.Name.Split(' ')[0].ToLower();
+                        <li><span><a href="#@firstWord">@lrgTabs.Name</a></span></li>
+                    }
+                </ul>
+
+                @foreach(var lrgTabs in performanceTableNode.Children)
+                {
+                    string firstWord = lrgTabs.Name.Split(' ')[0].ToLower();
+                    
+                    <div id="@firstWord" class="tab-content">
+                        <ul class="tabs tabs-secondary">
+                            @{index2 = 1;}
+                            @foreach (var lnkTabs in lrgTabs.Children) 
+                            { 
+                                <li><span><a href="#@String.Concat(lnkTabs.Name.Replace(" ", "-"), index1, index2)">@lnkTabs.Name<span class="icon"></span></a></span></li>
+                                index2++;
+                            }
+                        </ul>
+                        @{index2 = 1;}
+                        @foreach(var lnkTabs in lrgTabs.Children)
+                        {
+                            <div id="@String.Concat(lnkTabs.Name.Replace(" ", "-"), index1, index2)">
+                                <div class="styled-select">
+                                    <select class="performance-selector">
+                                        <option>Select time period</option>
+                                        @{index3 = 1;}
+                                        @foreach(var data in lnkTabs.Children)
+                                        {
+                                            if (data.DocumentTypeAlias == "PerformanceTableSuperFund" || data.DocumentTypeAlias == "PerformanceTableIncomeStream")
+                                            {
+                                                string anchName = String.Concat(lnkTabs.Name.Replace(" ", "-"), "-", data.Name.Replace(" ", ""), index1, index2, index3);
+                                                <option value="#@anchName">@data.Name</option>
+                                                index3++;                                                
+                                            }
+                                            else
+                                            {
+                                                foreach(var dataRow in data.Children)
+                                                {
+                                                    string ancName = String.Concat(lnkTabs.Name.Replace(" ", "-"), "-", data.Name.Replace(" ", ""), dataRow.Name.Replace(" ", ""), index1, index2, index3);
+                                                    <option value="#@ancName">@String.Concat(dataRow.Name, data.Name.Remove(0, 2))</option>
+                                                    index3++; 
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                @{index3 = 1;}
+                                @foreach(var data in lnkTabs.Children)
+                                {
+                                    if (data.DocumentTypeAlias == "PerformanceTableSuperFund" || data.DocumentTypeAlias == "PerformanceTableIncomeStream")
+                                    {
+                                        string ancName = String.Concat(lnkTabs.Name.Replace(" ", "-"), "-", data.Name.Replace(" ", ""), index1, index2, index3);
+                                        @Html.Partial("~/Views/Partials/PerformanceTableMobileDataRow.cshtml", new PrimeSuper.Web.Models.PerformanceTableItemMobileModel { Item = data, AncName = ancName })                                                                                
+                                        index3++;
+                                    }
+                                    else
+                                    {
+                                        foreach(var dataRow in data.Children)
+                                        {
+                                            string ancName = String.Concat(lnkTabs.Name.Replace(" ", "-"), "-", data.Name.Replace(" ", ""), dataRow.Name.Replace(" ", ""), index1, index2, index3);
+                                            @Html.Partial("~/Views/Partials/PerformanceTableMobileDataRow.cshtml", new PrimeSuper.Web.Models.PerformanceTableItemMobileModel { Item = dataRow, AncName = ancName })
+                                            index3++;
+                                        }
+                                    }
+                                }
+                                @if(lnkTabs.GetProperty("mobileText").HasValue)
+                                {
+                                    @Html.Raw(lnkTabs.GetProperty("mobileText").Value)
+                                }
+                            </div>
+                            index2++;
+                        }
+                    </div>
+                    index1++;
+                }
+            </div>
+        
+</div>
+<!-- end Performance Table -->
+@Html.Partial("~/Views/Partials/MobileBack.cshtml")

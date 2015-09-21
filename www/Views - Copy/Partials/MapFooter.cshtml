@@ -1,0 +1,52 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<div class="pageRowInner">
+    <!-- start: footer features -->
+    <div class="featuresWrapper">
+        <div id="footerFeatures">
+            <ul>
+                <li class="col1">
+                    @*<reactive:RContentPlaceHolder ID="RContentPlaceHolder2" runat="server" Title="Seminar">
+                    </reactive:RContentPlaceHolder>*@
+
+
+
+
+                    <!-- begin : Standard Item Selector -->
+                    <div>
+
+
+                        <div class="module moduleWysiwyg">
+                            <div class="moduleContent">
+
+
+                                <h2>Prime Super Seminars</h2>
+                                <p>Our seminars are held regularly</p>
+                                <a href="@PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("generalEnquiriesItem").Url">Contact us to sign up</a>
+
+
+                            </div>
+                        </div>
+                    </div><!-- end : Standard Item Selector -->
+
+
+
+
+
+
+
+                </li>
+                <li class="col2">
+                    <h2>
+                        @String.Format("{0:0,0}", MapManager.Library.Utilities.getNumberTownsVisited() + 20)
+                        towns visited
+                    </h2>
+                    <p>
+                        Have we been to yours?
+                    </p>
+                    <a href="@PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("regionalManagerItem").Url">Contact us for a visit</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end: footer features -->
+</div>

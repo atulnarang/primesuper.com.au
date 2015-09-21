@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<PrimeSuper.Web.Models.PerformanceTableItemModel>
+@{
+    int index = Model.CurrentIndex;
+    
+    foreach(var row in Model.List)
+    {
+        <tr @(index % 2 == 0 ? "class=odd" : "")>
+            <td class="title">@row.Name</td>
+            <td>@(row.DocumentTypeAlias == "PerformanceTableIncomeStream" ? row.GetPropertyValue("balanced") : row.GetPropertyValue("mySuper"))</td>
+            <td>@row.GetPropertyValue("managedGrowth")</td>
+            <td>@row.GetPropertyValue("conservative")</td>
+            <td>@row.GetPropertyValue("alternatives")</td>
+            <td>@row.GetPropertyValue("australianShares")</td>
+            <td>@row.GetPropertyValue("internationalShares")</td>
+            <td>@row.GetPropertyValue("property")</td>
+            <td>@row.GetPropertyValue("fixedInterest")</td>
+            <td>@row.GetPropertyValue("cash")</td>
+        </tr>
+        index++;
+    }
+}

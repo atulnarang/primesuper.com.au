@@ -1,0 +1,50 @@
+/*
+
+FOR USE BY UMBRACO RTE ONLY- DON'T USE THIS ON THE FRONT END
+
+
+*/
+/* line 11, ./css/rte.scss */
+h1 {
+  font-size: 60px;
+}
+
+/* line 15, ./css/rte.scss */
+h2 {
+  font-size: 28px;
+}
+
+/* line 19, ./css/rte.scss */
+h3 {
+  font-size: 26px;
+}
+
+/* line 23, ./css/rte.scss */
+h4 {
+  font-size: 20px;
+}
+
+/* line 27, ./css/rte.scss */
+h5 {
+  font-size: 18px;
+}
+
+/* line 31, ./css/rte.scss */
+h6 {
+  font-size: 15px;
+}
+
+/* line 35, ./css/rte.scss */
+p {
+  font-size: 13px;
+}
+
+/* line 44, ./css/rte.scss */
+strong {
+  font-weight: 700;
+}
+
+/* line 48, ./css/rte.scss */
+em {
+  font-style: italic;
+}

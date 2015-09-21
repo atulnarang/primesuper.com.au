@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using PrimeSuper.Web.Classes
+@using Umbraco.Core.Models
+@{
+    var qlFolder = ConfigurationHelper.GetPropertyValueNode("quickLinks");
+
+    IEnumerable<Umbraco.Core.Models.IPublishedContent> quickLinks = qlFolder != null ? qlFolder.Children : null;
+
+    int count = 1;
+}
+
+@if(quickLinks != null && quickLinks.Any())
+{ 
+    <div id="quickLinks" class="section quickLinks">
+
+        <h2>I want to..</h2>
+        <ul style="display: none;">
+            @foreach(var ql in quickLinks)
+            {
+                <li @(count == quickLinks.Count() ? "class=last" : "")><a href="@(ql.GetPropertyValue<string>("linkUrl"))">@ql.GetPropertyValue("linkText")</a></li>
+                count++;
+            }
+        </ul>
+
+    </div><!-- .quickLinks -->
+}

@@ -1,0 +1,94 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "MasterLayout.cshtml";
+    ViewBag.BodyClass = "home";
+}
+
+<div class="pageRow pageRowTop">
+    <div class="pageRowInner">
+        @Html.Partial("~/Views/Partials/Branding.cshtml")
+        <!-- start: header -->
+        <div id="header">
+
+            <!-- start: nav -->
+            @Html.Partial("~/Views/Partials/Navigation.cshtml")
+            <!-- end: nav -->
+            @Html.Partial("~/Views/Partials/HomePageScroller.cshtml")
+
+            @Html.Partial("~/Views/Partials/ContentControls.cshtml")
+
+        </div>
+        <!-- end: header -->
+        <!-- start: container -->
+        <div class="container">
+            <div class="container-2">
+                <span class="bannerEdge"></span>
+                <!-- start: content -->
+                <div id="content">
+
+                    @{
+                        var notificationsFolder = PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("notifications");
+                        var notifications = notificationsFolder != null ? notificationsFolder.Children.Where(n => n != null && DateTime.Parse(n.GetPropertyValue<string>("startDate")).Date <= DateTime.Now.Date && DateTime.Parse(n.GetPropertyValue<string>("endDate")).Date >= DateTime.Now.Date && n.GetPropertyValue<bool>("Active"))
+                                                                        : null;
+                        if (notifications != null && notifications.Any())
+                        {
+                        <!-- begin notifications -->
+                            foreach (var notification in notifications)
+                            {
+                        <div class="cufon alertBox">
+                            <div class="alert-inner">
+                                <span class="icon">Alert</span>
+                                <h2>@notification.GetPropertyValue("linkText")</h2>
+
+                                <a class="link" href="@notification.GetPropertyValue("Url")"></a>
+                                <span class="clear"></span>
+                            </div>
+                            <!-- .alert-inner -->
+                        </div>
+                            }
+                        
+                        <!-- end notifications -->
+                        }
+                    }
+
+                    <!--Begin:Primary Content-->
+                    @Model.Content.GetPropertyValue("primarycontent")
+                    <!--End:Primary Content-->
+                    <!--Begin:Secondary Content-->
+                    @Model.Content.GetPropertyValue("secondarycontent")
+                    <!--End:Secondary Content-->
+
+                    <div class="advertisingColumn">
+                        <img src="/resources/desktop/img/logos/industry-fund.jpg" alt="An Industry Superfund" />
+
+                    </div>
+                </div>
+                <!-- end: content -->
+                <!-- start: sideContent -->
+                <div id="sideContent">
+
+                    <!--Begin site search-->
+                    @*  @Html.Partial("~/Views/Partials/SearchBox.cshtml", new PrimeSuper.Web.Models.SearchBoxViewModel() { IsSideContent = true })*@
+                    <!--End site search-->
+
+                    <!--Begin Map-->
+                    <div style="padding-left: 15px">
+                        @Html.Partial("~/Views/Partials/StateSelect.cshtml")
+                    </div>
+                    @Html.Partial("~/Views/Partials/RegionalManagers.cshtml")
+                    <!--End Map-->
+                    <div class="section">
+                        <img src="/Resources/desktop/img/news_header.png"/>
+                        <div class="content" style="padding-top:8px;width:258px;">
+                            <iframe name="if2" scrolling="no" frameborder="0" allowtransparency="true" width="100%" height="350" src="https://feed.meltwater.com/gyda/outputs/xml/html/20/65/v2_472977.html"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: sideContent -->
+                <span class="clear"></span>
+            </div>
+            <!-- end: container2 -->
+        </div>
+        <!-- end: container -->
+    </div>
+</div>

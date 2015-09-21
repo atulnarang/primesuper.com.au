@@ -1,0 +1,59 @@
+/* Print Style Sheet */
+/* line 3, ./css/print.scss */
+body {
+  font: 10pt Arial, Helvetica, sans-serif;
+  color: #000;
+}
+
+/* line 8, ./css/print.scss */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 13, ./css/print.scss */
+a img {
+  border: 0;
+}
+
+/* turn off */
+/* line 19, ./css/print.scss */
+.skipLinks,
+#nav,
+#accountAction,
+.breadcrumbs,
+.subContent,
+#sideContent,
+.searchBar,
+#contentControls,
+#footer,
+#footerFeatures,
+#importantNotice img {
+  display: none;
+}
+
+/* line 33, ./css/print.scss */
+#importantNotice p {
+  font-size: 11px;
+}
+
+/* SIFR PRINT CSS */
+/* line 36, ./css/print.scss */
+.sIFR-flash {
+  display: none !important;
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+/* line 44, ./css/print.scss */
+.sIFR-alternate {
+  visibility: visible !important;
+  display: block   !important;
+  position: static  !important;
+  left: auto    !important;
+  top: auto    !important;
+  width: auto    !important;
+  height: auto    !important;
+}

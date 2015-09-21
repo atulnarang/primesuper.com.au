@@ -1,0 +1,1141 @@
+@font-face {
+    font-family: "HelveticaNeueW02-45Ligh";
+    src: url("../fonts/694015/88fcd49a-13c7-4d0c-86b1-ad1e258bd75d.eot?#iefix");
+    src: url("../fonts/694015/88fcd49a-13c7-4d0c-86b1-ad1e258bd75d.eot?#iefix") format("eot"), url("../fonts/694015/9a2e4855-380f-477f-950e-d98e8db54eac.woff") format("woff"), url("../fonts/694015/fa82d0ee-4fbd-4cc9-bf9f-226ad1fcbae2.ttf") format("truetype"), url("../fonts/694015/48d599a6-92b5-4d43-a4ac-8959f6971853.svg#48d599a6-92b5-4d43-a4ac-8959f6971853") format("svg");
+}
+
+@font-face {
+    font-family: "HelveticaNeueW02-77BdCn 694066";
+    src: url("../fonts/694066/77cb0adc-646b-4830-8f4c-3db7adbb8dc4.eot?#iefix");
+    src: url("../fonts/694066/77cb0adc-646b-4830-8f4c-3db7adbb8dc4.eot?#iefix") format("eot"), url("../fonts/694066/631bf655-ced5-4627-93d4-89d1bdfe3014.woff") format("woff"), url("../fonts/694066/96740819-d387-437f-b739-9778ddc5e5b9.ttf") format("truetype"), url("../fonts/694066/05729794-671d-4a73-a294-f2f447795319.svg#05729794-671d-4a73-a294-f2f447795319") format("svg");
+}
+/*
+This CSS resource incorporates links to font software which is the valuable copyrighted
+property of Monotype and/or its suppliers. You may not attempt to copy, install,
+redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+with any questions regarding Web Fonts:  http://www.linotype.com
+*/
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/* Baseline, measured in pixels
+ * The value should be the same as the font-size value for the html element
+ * If the html element's font-size is set to 62.5% (of the browser's default font-size of 16px),
+ * then the variable below would be 10px.
+ */
+/* line 54, css\_mixins.scss */
+.clearfix {
+    zoom: 1;
+}
+    /* line 56, css\_mixins.scss */
+    .clearfix:before, .clearfix:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    /* line 62, css\_mixins.scss */
+    .clearfix:after {
+        clear: both;
+    }
+
+/*Drawer and controls*/
+/* line 5, ./css/map.scss */
+a {
+    color: #f07d00;
+    text-decoration: none;
+}
+
+    /* line 9, ./css/map.scss */
+    a:hover {
+        color: #f07d00;
+    }
+
+/* line 14, ./css/map.scss */
+.controlBtns {
+    float: left;
+    margin-right: 162px;
+}
+
+    /* line 18, ./css/map.scss */
+    .controlBtns a {
+        display: block;
+        float: left;
+        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -322px 0;
+        width: 97px;
+        height: 17px;
+        padding: 12px 15px 10px 20px;
+        font-size: 1.33em;
+        text-align: right;
+    }
+
+        /* line 28, ./css/map.scss */
+        .controlBtns a:hover {
+            background-position: -322px -39px;
+        }
+
+    /* line 31, ./css/map.scss */
+    .controlBtns #previousLocationButton.disabled {
+        background-position: -322px -165px;
+        color: #717171;
+        cursor: pointer;
+        text-indent: -999em;
+        display: block;
+    }
+
+    /* line 38, ./css/map.scss */
+    .controlBtns a.disabled cufon {
+        display: none;
+    }
+
+    /* line 41, ./css/map.scss */
+    .controlBtns #previousLocationButton.disabled:hover {
+        cursor: default;
+    }
+
+    /* line 44, ./css/map.scss */
+    .controlBtns #nextLocationButton {
+        background-position: -454px 0;
+        padding: 12px 15px 10px 20px;
+        text-align: left;
+    }
+
+        /* line 49, ./css/map.scss */
+        .controlBtns #nextLocationButton:hover {
+            background-position: -454px -39px;
+        }
+
+        /* line 52, ./css/map.scss */
+        .controlBtns #nextLocationButton.disabled {
+            background-position: -454px 0px; /*-165px;*/
+            color: #717171;
+            cursor: default;
+            text-indent: -999em;
+            display: block;
+        }
+
+            /* line 59, ./css/map.scss */
+            .controlBtns #nextLocationButton.disabled:hover {
+                cursor: default;
+            }
+
+/* line 62, ./css/map.scss */
+#zoom-controls span.cufon {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    color: #666666;
+    font-size: 15px;
+    padding-top: 12px;
+    font-family: AvenirMedium;
+    padding-left: 10px;
+}
+
+/* line 70, ./css/map.scss */
+#zoom-controls a {
+    display: block;
+    float: left;
+    height: 39px;
+    width: 42px;
+    background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -215px -86px;
+    text-indent: -999em;
+    cursor: pointer;
+    margin-left: 3px;
+    margin-right: 2px;
+}
+
+/* line 80, ./css/map.scss */
+#zoom-controls .zoomout:hover {
+    background-position: -214px -164px;
+}
+
+/* line 83, ./css/map.scss */
+#zoom-controls .zoomout.active {
+    background-position: -214px -125px;
+}
+
+/* line 86, ./css/map.scss */
+#zoom-controls .zoomin {
+    background-position: -255px -86px;
+}
+
+    /* line 89, ./css/map.scss */
+    #zoom-controls .zoomin:hover {
+        /*background-position: -255px -164px;*/
+    }
+
+    /* line 92, ./css/map.scss */
+    #zoom-controls .zoomin.active {
+        background-position: -257px -127px;
+    }
+
+/* line 96, ./css/map.scss */
+#recent-visits {
+    display: block;
+    background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -146px 0px;
+    float: left;
+    margin-right: 10px;
+    height: 18px;
+    padding: 10px;
+    width: 140px;
+    padding: 8px 10px 15px 33px;
+    cursor: pointer;
+    clear: left;
+}
+
+    /* line 112, ./css/map.scss */
+    #recent-visits:hover {
+        color: #666666;
+        background: url("/Resources/desktop/img/map/dropdown_top.png") no-repeat 1px top;
+        height: 23px;
+    }
+    /* line 119, ./css/map.scss */
+    #recent-visits span {
+        color: #fff;
+        font-size: 17px;
+        display: block;
+    }
+        /* line 123, ./css/map.scss */
+        #recent-visits span:hover {
+            color: #666666;
+        }
+    /* line 128, ./css/map.scss */
+    #recent-visits.active span {
+        color: #666666;
+    }
+
+/*Map last-visited dropdown*/
+/* line 135, ./css/map.scss */
+#mapNavWrapper {
+    position: absolute;
+    z-index: 99;
+    margin: 0;
+    display: none;
+}
+
+/* line 141, ./css/map.scss */
+#mapNav {
+    background: url("/Resources/desktop/img/map/dropdown_rpt.png") no-repeat left top;
+    margin: 14px 0 0 -32px;
+    width: 283px;
+    padding: 5px 10px 0 5px;
+}
+
+    /* line 147, ./css/map.scss */
+    #mapNav li {
+        list-style-type: none;
+        border-bottom: 1px solid #dce0cf;
+        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 7px -296px;
+        font-weight: bold;
+        color: #006a65;
+        padding: 8px 10px 7px 23px;
+        font-size: 1em;
+        line-height: 19px;
+        height: 18px;
+        overflow: hidden;
+    }
+
+        /* line 160, ./css/map.scss */
+        #mapNav li:hover {
+            background: #666666 url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 7px -336px;
+            color: #FFF;
+        }
+
+        /* line 164, ./css/map.scss */
+        #mapNav li.disabled {
+            background: #bbbbbb url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 7px -336px;
+            color: #FFF;
+        }
+
+        /* line 168, ./css/map.scss */
+        #mapNav li:last-child {
+            border-bottom: 0;
+        }
+
+/* line 171, ./css/map.scss */
+#mapNavWrapper .mapNav-btm {
+    background: url("/Resources/desktop/img/map/dropdown_btm.png") no-repeat top left;
+    height: 12px;
+    width: 301px;
+    display: block;
+    margin-left: -32px;
+}
+
+/* line 182, ./css/map.scss */
+.locationWrapper {
+    width: 997px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* line 187, ./css/map.scss */
+#nextLocation {
+    position: absolute;
+    bottom: 20px;
+    right: 24%;
+    background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 2px -208px;
+    width: 330px;
+    height: 33px;
+    font-size: 14px;
+    color: #717171;
+    padding-top: 25px;
+    padding-left: 43px;
+    z-index: 999em;
+    display: none;
+}
+
+    /* line 202, ./css/map.scss */
+    #nextLocation .location {
+        color: #637d0b;
+    }
+
+/* line 206, ./css/map.scss */
+#drawerButton {
+    cursor: pointer;
+    margin-right: 15px;
+    float: left;
+}
+
+    /* line 211, ./css/map.scss */
+    #drawerButton span.cufon {
+        float: left;
+        margin-right: 10px;
+        color: #464646;
+        font-size: 15px;
+        padding-top: 12px;
+        font-family: AvenirMedium;
+    }
+
+    /* line 218, ./css/map.scss */
+    #drawerButton .btn {
+        display: block;
+        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -164px -85px;
+        height: 39px;
+        width: 43px;
+        text-indent: -999em;
+        float: left;
+    }
+
+        /* line 226, ./css/map.scss */
+        #drawerButton .btn:hover {
+            background-position: -164px -124px;
+        }
+
+/*Manager Details */
+/* line 231, ./css/map.scss */
+.managerDetails {
+    padding-top: 20px;
+    height: 77px;
+    overflow: hidden;
+}
+
+    /* line 240, ./css/map.scss */
+    .managerDetails h2 {
+        font-size: 4.667em;
+        color: #3d5103;
+        display: inline-block;
+        float: left;
+    }
+
+/* line 246, ./css/map.scss */
+.cufon-loading .managerDetails h2 {
+    font-size: 2.83em;
+    font-weight: bold;
+}
+
+/* line 250, ./css/map.scss */
+#managerLocation {
+    font-weight: bold;
+    color: #474747;
+    display: inline-block;
+    padding-left: 25px;
+    float: left;
+}
+
+    /* line 257, ./css/map.scss */
+    #managerLocation .map {
+        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 0 -558px;
+        height: 57px;
+        width: 62px;
+        display: block;
+        float: left;
+    }
+
+    /* line 264, ./css/map.scss */
+    #managerLocation .drews {
+        background-position: 0 -558px;
+    }
+
+    /* line 267, ./css/map.scss */
+    #managerLocation .text {
+        float: left;
+        margin-left: 10px;
+        font-weight: bold;
+        padding-top: 20px;
+        display: block;
+    }
+
+/*Infobox Box*/
+/* line 281, ./css/map.scss */
+#infobox-content {
+    margin-left: 25px;
+    margin-top: 20px;
+    padding-left: 9px;
+    padding-top: 5px;
+}
+
+    /* line 286, ./css/map.scss */
+    #infobox-content .info {
+        float: left;
+        height: 100%;
+        width: 150px;
+    }
+
+    /* line 292, ./css/map.scss */
+    #infobox-content .infobox-content {
+        padding: 10px;
+        font-size: 1.67em;
+        color: #5b5b5b;
+        position: relative;
+        float: left;
+        height: 205px;
+        padding-top: 0px;
+    }
+
+        /* line 300, ./css/map.scss */
+        #infobox-content .infobox-content .header {
+            clear: both;
+            width: 269px;
+            height: 29px;
+            /* overflow: hidden; */
+            margin-bottom: 10px;
+        }
+
+            /* line 309, ./css/map.scss */
+            #infobox-content .infobox-content .header h2 {
+                color: #00a5e2;
+                font-size: 26px;
+                width: 206px;
+                margin-bottom: 0;
+                /* font-weight: bold; */
+                font-family: AvenirHeavy;
+            }
+
+            /*
+.cufon-active #infobox-content .infobox-content .header h2 {
+    font-size:1.75em;
+    margin-bottom:10px;
+}
+*/
+            /* line 322, ./css/map.scss */
+            #infobox-content .infobox-content .header .controls {
+                position: absolute;
+                right: 4px;
+                top: 5px;
+                width: 60px;
+            }
+
+                /* line 328, ./css/map.scss */
+                #infobox-content .infobox-content .header .controls .closeBtn {
+                    display: block;
+                    text-indent: -999em;
+                    background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -304px -166px;
+                    height: 15px;
+                    width: 15px;
+                    margin-left: 15px;
+                    display: block;
+                    cursor: pointer;
+                    float: right;
+                }
+
+                    /* line 339, ./css/map.scss */
+                    #infobox-content .infobox-content .header .controls .closeBtn:hover {
+                        background-position: -304px -182px;
+                    }
+
+            /* line 343, ./css/map.scss */
+            #infobox-content .infobox-content .header a {
+                text-indent: -999em;
+                display: block;
+                height: 15px;
+                width: 8px;
+                float: left;
+            }
+
+                /* line 350, ./css/map.scss */
+                #infobox-content .infobox-content .header a.prev {
+                    background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 0 -115px;
+                    padding-right: 10px;
+                }
+
+            /* line 354, ./css/map.scss */
+            #infobox-content .infobox-content .header .prev.inactive {
+                background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -1px -449px;
+            }
+
+            /* line 357, ./css/map.scss */
+            #infobox-content .infobox-content .header a.next {
+                background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 0 -156px;
+            }
+
+            /* line 360, ./css/map.scss */
+            #infobox-content .infobox-content .header .next.inactive {
+                background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -1px -397px;
+            }
+
+        /* line 363, ./css/map.scss */
+        #infobox-content .infobox-content span.message {
+            display: block;
+            clear: both;
+            width: 259px;
+            height: 115px;
+            overflow: hidden;
+            font-family: "AvenirMedium", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-size: 16px;
+            color: #464646;
+            opacity: 0.8;
+        }
+
+    /* line 371, ./css/map.scss */
+    #infobox-content .imageWrap {
+        display: block;
+        height: 162px;
+        width: 145px;
+        overflow: hidden;
+    }
+    .imageWrap img {
+        border: 1px solid #d2d2d2;
+    }
+    /* line 377, ./css/map.scss */
+    #infobox-content .date {
+        font-size: 13px;
+        position: absolute;
+        bottom: 10px;
+        padding-top: 10px;
+        width: 266px;
+        display: block;
+        left: 10px;
+        text-align: right;
+        font-family: AvenirMedium;
+        color: #ccc;
+    }
+
+    /* line 388, ./css/map.scss */
+    #infobox-content .info a.email {
+        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 0 0;
+        display: block;
+        height: 20px;
+        width: 106px;
+        color: #FFF;
+        text-decoration: none;
+        font-size: 1.16em;
+        padding: 7px 5px 3px 35px;
+        margin-top: 3px;
+        font-weight: bold;
+    }
+
+    /* line 400, ./css/map.scss */
+    #infobox-content .info a:hover {
+        background-position: 0 -34px;
+    }
+
+    /* line 403, ./css/map.scss */
+    #infobox-content .info .phone {
+        padding: 10px 10px 5px 30px;
+        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 14px -499px;
+        background-position: 25px -499px;
+        width: 101px;
+        height: 17px;
+        text-align: center;
+        font-size: 1.16em;
+        font-weight: bold;
+    }
+
+        /* line 411, ./css/map.scss */
+        #infobox-content .info .phone a, #infobox-content .info .phone a:hover, #infobox-content .info .phone a:focus {
+            color: #666666;
+        }
+
+/*Manager Drawer*/
+/* line 417, ./css/map.scss */
+#manager-drawer {
+    overflow: hidden;
+    background: none;
+    zoom: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 10px;
+    margin: 0 auto;
+    display: block;
+}
+
+    /* line 433, ./css/map.scss */
+    #manager-drawer .title {
+        margin: 20px 0;
+    }
+        /* line 440, ./css/map.scss */
+        #manager-drawer .title h1 {
+            position: static;
+            color: #666666;
+            font-size: 52px;
+        }
+        /* line 445, ./css/map.scss */
+        #manager-drawer .title h2 {
+            color: #666666;
+            font-family: "HelveticaNeueW02-45Ligh", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        }
+
+    /* line 450, ./css/map.scss */
+    #manager-drawer ul {
+        clear: both;
+        padding: 0;
+        margin: 0;
+        margin-top: 38px;
+        margin-left: 0px;
+    }
+
+        /* line 455, ./css/map.scss */
+        #manager-drawer ul li {
+            float: left;
+            list-style-type: none;
+            width: 158px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            margin-left: 17px;
+            margin-right: 18px;
+            border: 1px solid #fba317;
+        }
+
+
+            /* line 466, ./css/map.scss */
+            #manager-drawer ul li:hover {
+                cursor: pointer;
+            }
+
+            /* hide Ashley */
+            /* line 472, ./css/map.scss */
+            #manager-drawer ul li.ag {
+                display: none !important;
+            }
+
+            /* line 476, ./css/map.scss */
+            #manager-drawer ul li a {
+                display: block;
+            }
+
+                /* line 479, ./css/map.scss */
+                #manager-drawer ul li a:hover {
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+
+            /* line 483, ./css/map.scss */
+            #manager-drawer ul li .image {
+                width: 100%;
+                height: 207px;
+                overflow: hidden;
+            }
+                /* line 490, ./css/map.scss */
+                #manager-drawer ul li .image img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                /* line 496, ./css/map.scss */
+                #manager-drawer ul li .image .map {
+                    position: absolute;
+                    bottom: 3px;
+                    right: 10px;
+                    height: 47px;
+                    width: 50px;
+                }
+
+            /* line 503, ./css/map.scss */
+            #manager-drawer ul li.rk .map {
+                background: url("/Resources/desktop/img/map/map_radek.png") no-repeat 0 0;
+            }
+
+            /* line 504, ./css/map.scss */
+            #manager-drawer ul li.ww .map {
+                background: url("/Resources/desktop/img/map/map_wayne.png") no-repeat 0 0;
+            }
+
+            /* line 505, ./css/map.scss */
+            #manager-drawer ul li.ag .map {
+                background: url("/Resources/desktop/img/map/map_ashley.png") no-repeat 0 0;
+            }
+
+            /* line 506, ./css/map.scss */
+            #manager-drawer ul li.gh .map {
+                background: url("/Resources/desktop/img/map/map_geoff.png") no-repeat 0 0;
+            }
+
+            /*Scott and Geoff both have NSW maps*/
+            /* line 507, ./css/map.scss */
+            #manager-drawer ul li.sb .map {
+                background: url("/Resources/desktop/img/map/map_scott.png") no-repeat 0 0;
+            }
+
+            /* line 508, ./css/map.scss */
+            #manager-drawer ul li.rs .map {
+                background: url("/Resources/desktop/img/map/map_rod.png") no-repeat 0 0;
+            }
+
+            /* line 510, ./css/map.scss */
+            #manager-drawer ul li .managerInfo {
+                background-color: #fba317;
+                padding: 10px 10px 15px;
+                line-height: 14px;
+                /*border-bottom: 5px solid #f07d00;*/
+                height: 50px;
+            }
+
+            /* line 518, ./css/map.scss */
+            #manager-drawer ul li:hover .managerInfo {
+                border-color: #f07d00;
+                background: #ff9c00;
+                cursor: pointer;
+            }
+
+            /* line 523, ./css/map.scss */
+            #manager-drawer ul li .name {
+                color: #FFF;
+                font-weight: bold;
+                display: block;
+                padding: 0 0 10px 0;
+            }
+
+            /* line 530, ./css/map.scss */
+            #manager-drawer ul li .location {
+                color: #fff;
+            }
+
+    /* line 537, ./css/map.scss */
+    #manager-drawer #managerClose {
+        display: none;
+        height: 27px;
+        width: 27px;
+        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -486px -86px;
+        position: absolute;
+        right: 0;
+        top: 70px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+        /* line 548, ./css/map.scss */
+        #manager-drawer #managerClose:hover {
+            background-position: -486px -115px;
+            cursor: pointer;
+        }
+
+/* line 553, ./css/map.scss */
+.drawerContainer {
+    margin: 0 auto;
+    width: 997px;
+    position: relative;
+}
+
+/* line 559, ./css/map.scss */
+#managerName {
+    opacity: 0;
+}
+
+/*Regional Map Styles*/
+/* line 565, ./css/map.scss */
+.mapPage #accountAction {
+    display: none;
+}
+
+/* line 568, ./css/map.scss */
+.mapPage .pageRowInner1 {
+    width: 997px;
+    background: transparent;
+}
+
+/* line 572, ./css/map.scss */
+.mapPage #header, .mapPage #footerFeatures1 {
+    width: 997px;
+    margin: 0 auto;
+}
+
+/* line 576, ./css/map.scss */
+.mapPage .container, .mapPage .container-2 {
+    background-image: none;
+    background-color: #FFF;
+    padding: 0;
+}
+
+/* line 581, ./css/map.scss */
+.mapPage #content, .mapPage .content {
+    width: 100%;
+    padding: 0;
+}
+
+/* line 587, ./css/map.scss */
+.mapContain {
+    height: 1015px;
+    min-width: 997px;
+    position: absolute;
+    z-index: 555;
+    clear: both;
+    width: 100%;
+    background: #fff;
+    /* display: none; */
+    margin-top: -8px;
+}
+
+/* line 599, ./css/map.scss */
+.mapWrapper {
+    width: 997px;
+    margin: 0 auto;
+    padding: 10px 23px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: none;
+}
+
+/* line 610, ./css/map.scss */
+.mapPos {
+    position: relative;
+}
+
+/*Map Footer*/
+/* line 616, ./css/map.scss */
+.mapPage #footerFeatures1 {
+    background: url("/Resources/desktop/img/backgrounds/footer-bg.gif") no-repeat scroll center 0 #f07d00;
+}
+
+/* line 620, ./css/map.scss */
+#overlay {
+    display: block;
+    width: 100%;
+    background: url("/Resources/desktop/img/map/overlay.png") repeat;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    z-index: 444;
+    height: 1148px;
+}
+
+/* line 631, ./css/map.scss */
+#map_canvas {
+    top: -8px;
+    padding-bottom: 250px;
+}
+
+/* line 636, ./css/map.scss */
+.mapFooter {
+    background: url("/Resources/desktop/img/backgrounds/mapFooter.png") repeat-x top center transparent;
+    margin-top: -8px;
+    position: relative;
+    z-index: 333;
+    max-width: 997px;
+    margin: 0 auto;
+}
+    /* line 644, ./css/map.scss */
+    .mapFooter #importantNotice {
+        /*width: 997px;
+  padding: 20px 0;*/
+    }
+        /* line 647, ./css/map.scss */
+        .mapFooter #importantNotice * {
+            /*max-width: 997px;
+  margin: 0 auto;*/
+        }
+
+    /* line 653, ./css/map.scss */
+    .mapFooter .featuresWrapper1 {
+        width: 997px;
+        margin: 0 auto;
+        height: 194px;
+    }
+
+    /* line 657, ./css/map.scss */
+    .mapFooter #footerFeatures1 {
+        background: none;
+        overflow: visible;
+    }
+
+    /* line 661, ./css/map.scss */
+
+
+    /* line 664, ./css/map.scss */
+    .mapFooter .lwrfooterWrapper {
+        background: #ececec;
+    }
+
+    /* line 668, ./css/map.scss */
+    .mapFooter #footerFeatures1 ul li {
+        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat;
+        padding: 8px 10px 0 73px;
+        margin-top: 30px;
+        float: left;
+    }
+
+        /* line 673, ./css/map.scss */
+
+
+        /* line 678, ./css/map.scss */
+        .mapFooter #footerFeatures1 ul li.col1 {
+            background-position: -438px -202px;
+            width: 317px;
+            border-right: 0px;
+            border-left: 0px;
+        }
+
+        /* line 682, ./css/map.scss */
+        .mapFooter #footerFeatures1 ul li.col2 {
+            background-position: -438px -340px;
+            padding-left: 70px;
+            border-right: 0px;
+            border-left: 0px;
+        }
+
+        /* line 687, ./css/map.scss */
+        .mapFooter #footerFeatures1 ul li .module {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        /* line 691, ./css/map.scss */
+        .mapFooter #footerFeatures1 ul li h2 {
+            margin-bottom: 11px;
+            padding-bottom: 15px;
+            color: #201d1e;
+            border-bottom: 1px solid #ccc;
+            width: 228px;
+            font-size: 22px;
+            font-family: AvenirHeavy;
+        }
+
+        /* line 695, ./css/map.scss */
+        .mapFooter #footerFeatures1 ul li p {
+            font-size: 16px;
+            color: #666666;
+        }
+
+        /* line 699, ./css/map.scss */
+        .mapFooter #footerFeatures1 ul li a {
+            /*background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -306px -86px;*/
+            /*padding: 8px 10px 9px;*/
+            font-size: 1.33em;
+            color: #FFF;
+            width: 150px;
+            display: block;
+            text-align: center;
+            height: 16px;
+        }
+
+            /* line 709, ./css/map.scss */
+            .mapFooter #footerFeatures1 ul li a:hover {
+                background-position: -306px -119px;
+            }
+
+/* line 712, ./css/map.scss */
+.tooltip {
+    padding: 25px 30px;
+    color: #5a692e;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+/*Map Landing*/
+/* line 721, ./css/map.scss */
+.mapLanding .container-2 {
+    background: url("/Resources/desktop/img/map/landing_bg.jpg") repeat-x;
+    min-width: 997px;
+}
+
+/* line 725, ./css/map.scss */
+.mapLanding .container .content {
+    background: url("/Resources/desktop/img/map/radial_bg.png") center;
+}
+
+/* line 728, ./css/map.scss */
+#mapLanding {
+    background: url("/Resources/desktop/img/map/landing.png") no-repeat top center;
+    min-height: 773px;
+    width: 980px;
+    margin: 0 auto;
+    position: relative;
+}
+
+    /* line 735, ./css/map.scss */
+    #mapLanding ul li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        width: 93px;
+        height: 93px;
+    }
+
+        /* line 743, ./css/map.scss */
+        #mapLanding ul li a {
+            background: url("/Resources/desktop/img/map/landing-pos.png") no-repeat scroll 0 4px transparent;
+            display: block;
+            height: 48px;
+            padding: 21px 8px;
+            text-align: center;
+            width: 73px;
+            color: #FFF;
+            font-size: 1.16em;
+            position: relative;
+            z-index: 50;
+        }
+
+            /* line 755, ./css/map.scss */
+            #mapLanding ul li a:hover, #mapLanding ul li.selected a {
+                background-position: bottom left;
+                z-index: 100;
+            }
+
+        /* line 759, ./css/map.scss */
+        #mapLanding ul li p {
+            margin: 0;
+            display: block;
+            font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        }
+
+        /* line 764, ./css/map.scss */
+        #mapLanding ul li .portrait {
+            position: absolute;
+            left: -60px;
+            top: 8px;
+            display: block;
+            z-index: 100;
+            width: 73px;
+            height: 65px;
+        }
+
+        /* line 773, ./css/map.scss */
+        #mapLanding ul li.wa .portrait {
+            left: 70px;
+            top: 15px;
+        }
+
+        /* line 777, ./css/map.scss */
+        #mapLanding ul li .tooltip {
+            position: absolute;
+            background: #FFF;
+            width: 305px;
+            height: 125px;
+            display: none;
+            background: url("/Resources/desktop/img/map/tooltip_lrg_right.png") no-repeat 0 0;
+            padding: 17px 25px 30px 28px;
+            z-index: 9000;
+        }
+
+        /* line 787, ./css/map.scss */
+        #mapLanding ul li.right .tooltip {
+            background: url("/Resources/desktop/img/map/tooltip_lrg.png") no-repeat;
+            padding: 17px 18px 30px 37px;
+        }
+
+        /* line 791, ./css/map.scss */
+        #mapLanding ul li .image {
+            float: left;
+            width: 130px;
+        }
+
+        /* line 795, ./css/map.scss */
+        #mapLanding ul li .tooltip .text {
+            float: left;
+            width: 168px;
+            text-align: left;
+        }
+
+        /* line 800, ./css/map.scss */
+        #mapLanding ul li .tooltip .name {
+            display: block;
+            color: #00a5e2;
+            font-size: 26px;
+            padding-bottom: 10px;
+            float: left;
+            clear: right;
+            width: 168px;
+        }
+
+            /* line 809, ./css/map.scss */
+            #mapLanding ul li .tooltip .name cufon {
+                float: left;
+                height: 26px !important;
+            }
+
+        /* line 813, ./css/map.scss */
+        #mapLanding ul li .tooltip .latestPost {
+            color: #666666;
+            font-size: 15px;
+            float: left;
+        }
+
+    /*Map icon positions*/
+    /* line 820, ./css/map.scss */
+    #mapLanding .wa {
+        left: 170px;
+        top: 405px;
+    }
+
+        /* line 824, ./css/map.scss */
+        #mapLanding .wa p {
+            padding-top: 12px;
+        }
+
+    /* line 827, ./css/map.scss */
+    #mapLanding .nt {
+        top: 79px;
+        left: 363px;
+    }
+
+        /* line 831, ./css/map.scss */
+        #mapLanding .nt p {
+            padding-top: 15px;
+        }
+
+    /* line 834, ./css/map.scss */
+    #mapLanding .qld {
+        top: 120px;
+        right: 195px;
+    }
+
+        /* line 838, ./css/map.scss */
+        #mapLanding .qld p {
+            padding-top: 10px;
+        }
+
+    /* line 841, ./css/map.scss */
+    #mapLanding .sth_qld {
+        top: 310px;
+        right: 60px;
+    }
+
+        /* line 845, ./css/map.scss */
+        #mapLanding .sth_qld p {
+            padding-top: 10px;
+        }
+
+    /* line 848, ./css/map.scss */
+    #mapLanding .sth_nsw {
+        right: 150px;
+        top: 465px;
+    }
+
+        /* line 852, ./css/map.scss */
+        #mapLanding .sth_nsw p {
+            padding-top: 3px;
+        }
+
+    /* line 855, ./css/map.scss */
+    #mapLanding .tas {
+        right: 215px;
+        bottom: 80px;
+    }
+
+        /* line 859, ./css/map.scss */
+        #mapLanding .tas p {
+            padding-top: 11px;
+        }

@@ -1,0 +1,29 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Umbraco.Web;
+@using PrimeSuper.Web.Classes;
+
+@*Render the sitemap by passing the root node to the traverse helper*@
+@Traverse(CurrentPage.AncestorsOrSelf(1).First())
+
+@*Helper method to travers through all descendants*@
+@helper Traverse(dynamic node)
+{
+    @*Select visible children *@
+    var topItems = node.Children.Where("Visible").Where("displayInMobile == true").Where("displayInMobileTopNavigation == true");	
+
+    @*If any items are returned, render a list *@
+    if (topItems.Any())
+    {
+        
+                foreach (var topItem in topItems)
+                {
+                    <li>
+                        <a href="@topItem.Url">@PrimeSuper.Web.Classes.Extensions.GetNavigationTitle(topItem, true)</a>
+
+                        @*Run the traverse helper again *@
+                        @Traverse(topItem)
+                    </li>
+                }
+           
+    }
+}

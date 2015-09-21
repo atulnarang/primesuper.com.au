@@ -1,0 +1,43 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    int displayOneChild = 0;
+
+    if (CurrentPage.Ancestors().Any())
+    {
+        <div class="breadcrumbs">
+            <div class="displaynone">Site breadcrumbs</div>
+            <ul class="clfx">
+                @* For each page in the ancestors collection which have been ordered by Level (so we start with the highest top node first) *@
+                @foreach (var page in CurrentPage.Ancestors().OrderBy("Level"))
+                {
+                    if (page.Level > 1)
+                    { 
+                        if (page.Level == 2)
+                        {
+                            <li><a href="@page.Url">@page.Name</a></li>                        
+                        }
+                        else
+                        {
+                            if (displayOneChild == 0)
+                            {
+                                displayOneChild = 1;
+                                <li><span>@page.Name</span></li>
+                            }                        
+                        }
+                    }                     
+                }
+
+                @*@* Display the current page as the last item in the list *@
+                @if(CurrentPage.Level < 4 && CurrentPage.Name!="404")
+                {
+                   
+                    <li><span>@CurrentPage.Name</span></li>
+                }else
+                {
+                     <li>@CurrentPage.Name</li>
+                }
+            </ul>
+        </div>
+    }
+}

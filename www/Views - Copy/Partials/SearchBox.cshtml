@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<PrimeSuper.Web.Models.SearchBoxViewModel>
+@{
+    var searchResultsPage = PrimeSuper.Web.Classes.ConfigurationHelper.GetPropertyValueNode("searchResultsPage");
+}
+
+<div id="searchBox" >
+    @using (Html.BeginUmbracoForm<PrimeSuper.Web.Controllers.SearchBoxSurfaceController>("Search"))
+    {
+        if (UmbracoContext.PageId == searchResultsPage.Id && !Model.IsSideContent)
+        {
+        @Html.TextBoxFor(m => m.SearchQuery, new { @class = "searchInput", @id = "txtSearchTerm", Value = "Search" ,width = "110px"})
+        <input type="submit" name="bntSearch" value="Search" id="bntSearch" class="searchButton">
+        }
+        else
+        {
+  
+
+        @Html.TextBoxFor(m => m.SearchQuery, new { @class = "searchInput", @id = "txtSearchTerm", Value = "Search" })
+        <input type="submit" name="bntSearch" value="&nbsp;" id="bntSearch" class="searchButton side-search">
+
+@*   @Html.Partial("~/Views/Partials/QuickLinks.cshtml")*@
+   
+        <!-- .searchSection -->
+        }
+    }
+</div>
+
+

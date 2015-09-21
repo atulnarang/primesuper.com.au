@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    string currentUrl =  HttpUtility.UrlEncode(HttpContext.Current.Request.Url.ToString());
+}
+<ul id="contentControls">
+   @* <li class="share"><a href="/email-a-friend?url=@currentUrl">Share</a></li>*@
+</ul>

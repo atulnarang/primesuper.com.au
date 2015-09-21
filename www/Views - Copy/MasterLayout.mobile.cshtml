@@ -1,0 +1,107 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using PrimeSuper.Web.Classes;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="no-js">
+
+<head id="Head1" runat="server">
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+    @*<link rel="stylesheet" type="text/css" href="/Resources/mobile/css/style.css" media="screen" />*@
+    <link rel="stylesheet" type="text/css" href="@System.Configuration.ConfigurationManager.AppSettings["Mobile.CSSFileAndPath"]" media="screen" />
+
+    @Html.Raw(Model.Content.GetProperty("analyticsHead") != null && Model.Content.GetProperty("analyticsHead").HasValue ? Model.Content.GetPropertyValue("analyticsHead") : ConfigurationHelper.HomePage.GetPropertyValue("analyticsHead"))
+</head>
+<body runat="server" id="body" class="mobile">
+    <div class="overlay"></div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <a href="/"><img src="/Resources/mobile/img/logo-prime-super.png" alt="logo" /></a>
+            </div>
+            <nav class="nav members">
+                <ul>
+                    <li>
+                        <a href="@ConfigurationHelper.GetPropertyValueNode("joinPrimeSuperPage").Url">Join</a>
+                    </li>
+                    <li>
+                        <select id="login">
+                            <option value="login">Login</option>
+                            <option value="https://member.aas.com.au/login/PR">Individual Members</option>
+                            <option value="https://employer.aas.com.au/login/PR">Employers & Self-employed</option>
+                        </select>
+                    </li>
+                </ul>
+            </nav>
+            
+            <nav class="nav nav-main">
+                <ul>
+                    @Html.Partial("~/Views/Partials/MobileSideNavigation.cshtml")
+                    <li><a href="/">Home</a></li>       
+                    @Html.Partial("~/Views/Partials/MobileTopNavigation.cshtml")
+                </ul>
+            </nav>
+        </header>
+        <div class="main" role="main">
+            @RenderBody()
+            @*<reactive:RContentPlaceHolder ID="ContentPlaceHolder" Title="Content" runat="server">
+                </reactive:RContentPlaceHolder>
+                <reactive:RContentPlaceHolder ID="RContentPlaceHolder1" Title="Promo" runat="server">
+                </reactive:RContentPlaceHolder>*@
+        </div>
+        <footer>
+            <div class="inner"> 
+                <p>&copy; Copyright Prime Super 2013</p>
+                <nav>
+                    @Html.Partial("~/Views/Partials/MobileFooterNavigation.cshtml")
+                </nav>
+                <p>
+                    <strong><a href="/umbraco/surface/ViewSwitchSurface/SwitchView?mobile=false&returnurl=@Request.Url.PathAndQuery">View full site</a></strong>
+                </p>
+            </div>           
+        </footer>
+    </div><!--container -->
+
+    <script type="text/javascript" src="/Resources/mobile/js/libs/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/Resources/mobile/js/libs/modernizr.min.js"></script>
+    @*<script type="text/javascript" src="/Resources/mobile/js/scripts.js"></script>*@
+    <script type="text/javascript" src="@System.Configuration.ConfigurationManager.AppSettings["Mobile.JSFileAndPath"]"></script>
+
+    @*<asp:SiteMapDataSource ID="PrimarySitemapData" runat="server" />
+        <primesuper:Marketing ID="GoogleRemarketing" runat="server" />
+        <primesuper:Analytics ID="Analytics" runat="server" />*@
+    @Html.Raw(Model.Content.GetProperty("analyticsBody") != null && Model.Content.GetProperty("analyticsBody").HasValue ? Model.Content.GetPropertyValue("analyticsBody") : ConfigurationHelper.HomePage.GetPropertyValue("analyticsBody"))
+	
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('a').mouseup(function () {
+                var href = $(this).attr('href');
+                if (typeof href != 'undefined' && href != null && href != '') {
+                    var href_lower = href.toLowerCase();
+                    if (href_lower.substr(-3) == "pdf" || href_lower.substr(-3) == "xls" || href_lower.substr(-3) == "doc" ||
+                        href_lower.substr(-3) == "mp3" || href_lower.substr(-3) == "mp4" || href_lower.substr(-3) == "flv" ||
+                        href_lower.substr(-3) == "txt" || href_lower.substr(-3) == "csv" || href_lower.substr(-3) == "zip") {
+                        ga('send', 'event', 'Downloads', href_lower.substr(-3), href);
+                    }
+                    if (href_lower.length >= 4 && href_lower.substr(0, 4) == "http") {
+                        var domain = document.domain.replace("www.", '');
+                        if (href_lower.indexOf(domain) == -1) {
+                            href_lower = href_lower.replace("http://", '');
+                            href_lower = href_lower.replace("https://", '');
+                            ga('send', 'event', 'Outbound Traffic', 'Click', href_lower);
+                        }
+                    } else if (href_lower.indexOf('mailto:') != -1) {
+                        jQuery(this).click(function () {
+                            var mailLink = href_lower.replace(/^mailto\:/i, '');
+                            ga('send', 'event', 'Email', 'Click', mailLink);
+                        });
+                    }
+                }
+            });
+        });
+	</script>
+	
+</body>
+</html>

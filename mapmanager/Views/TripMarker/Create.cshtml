@@ -1,0 +1,64 @@
+﻿@model MapManager.Models.TripMarkerCreateModel
+
+@{
+    ViewBag.Title = "Where are you?";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.autocomplete.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Content/jquery.autocomplete.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {
+        $('#CurrentPlace').autocomplete('/MapManager/Postcode/Suggest', { autoFill: true });
+        $('#NextPlace').autocomplete('/MapManager/Postcode/Suggest', { autoFill: true });
+
+        $('#Message').bind('keyup', function () {
+            var maxchar = 140;
+            var cnt = $(this).val().length;
+            var remainingchar = maxchar - cnt;
+            $('#char-count').html(remainingchar);
+        });
+    });
+</script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CurrentPlace)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CurrentPlace)
+            @Html.ValidationMessageFor(model => model.CurrentPlace)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Message)
+            @Html.ValidationMessageFor(model => model.Message)
+            <div>Characters remaining: <span id="char-count">140</span></div>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NextPlace)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NextPlace)
+            @Html.ValidationMessageFor(model => model.NextPlace)
+        </div>
+      
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Home", "Index")
+</div>
