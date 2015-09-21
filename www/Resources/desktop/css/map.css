@@ -158,7 +158,7 @@ a {
 
 /* line 86, ./css/map.scss */
 #zoom-controls .zoomin {
-    background-position: -255px -86px;
+        background-position: -257px -86px;
 }
 
     /* line 89, ./css/map.scss */
@@ -260,7 +260,7 @@ a {
     height: 12px;
     width: 301px;
     display: block;
-    margin-left: -32px;
+    margin-left: -20px;
 }
 
 /* line 182, ./css/map.scss */
