@@ -1631,6 +1631,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     outline: 0;
 }
 
+.main-nav {
+    
+    float: left; width: 782px;
+}
+
 /* line 1, css\ps-original\_reset.scss */
 body {
     line-height: 1.1538;
