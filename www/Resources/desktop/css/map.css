@@ -81,6 +81,7 @@ a {
         cursor: pointer;
         text-indent: -999em;
         display: block;
+        opacity: 0.5;
     }
 
     /* line 38, ./css/map.scss */
@@ -112,6 +113,7 @@ a {
             cursor: default;
             text-indent: -999em;
             display: block;
+            opacity: 0.5;
         }
 
             /* line 59, ./css/map.scss */
@@ -146,12 +148,12 @@ a {
 
 /* line 80, ./css/map.scss */
 #zoom-controls .zoomout:hover {
-    background-position: -214px -164px;
+       background-position: -215px -168px;
 }
 
 /* line 83, ./css/map.scss */
 #zoom-controls .zoomout.active {
-    background-position: -214px -125px;
+    background-position: -214px -127px;
 }
 
 /* line 86, ./css/map.scss */
@@ -215,8 +217,8 @@ a {
 
 /* line 141, ./css/map.scss */
 #mapNav {
-    background: url("/Resources/desktop/img/map/dropdown_rpt.png") no-repeat left top;
-    margin: 14px 0 0 -32px;
+       background: url("/Resources/desktop/img/map/dropdown_rpt.png") no-repeat left top;
+    margin: 32px 0px 0px -20px;
     width: 283px;
     padding: 5px 10px 0 5px;
 }
@@ -227,7 +229,7 @@ a {
         border-bottom: 1px solid #dce0cf;
         background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 7px -296px;
         font-weight: bold;
-        color: #006a65;
+        color: #fff;
         padding: 8px 10px 7px 23px;
         font-size: 1em;
         line-height: 19px;
@@ -237,7 +239,7 @@ a {
 
         /* line 160, ./css/map.scss */
         #mapNav li:hover {
-            background: #666666 url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 7px -336px;
+            background: #0f5ca2 url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat 7px -336px;
             color: #FFF;
         }
 
@@ -309,7 +311,7 @@ a {
     /* line 218, ./css/map.scss */
     #drawerButton .btn {
         display: block;
-        background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -164px -85px;
+       background: url("/Resources/desktop/img/sprites/map_sprite.png") no-repeat -164px -86px;
         height: 39px;
         width: 43px;
         text-indent: -999em;
@@ -318,7 +320,7 @@ a {
 
         /* line 226, ./css/map.scss */
         #drawerButton .btn:hover {
-            background-position: -164px -124px;
+            background-position: -164px -127px;
         }
 
 /*Manager Details */

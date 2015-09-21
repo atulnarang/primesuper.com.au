@@ -53,6 +53,43 @@ table {
   src: url("../fonts/694066/77cb0adc-646b-4830-8f4c-3db7adbb8dc4.eot?#iefix");
   src: url("../fonts/694066/77cb0adc-646b-4830-8f4c-3db7adbb8dc4.eot?#iefix") format("eot"), url("../fonts/694066/631bf655-ced5-4627-93d4-89d1bdfe3014.woff") format("woff"), url("../fonts/694066/96740819-d387-437f-b739-9778ddc5e5b9.ttf") format("truetype"), url("../fonts/694066/05729794-671d-4a73-a294-f2f447795319.svg#05729794-671d-4a73-a294-f2f447795319") format("svg"); }
 
+/*@font-face {
+    font-family: 'avenir_85_heavyregular';
+    src: url('../fonts/Avenir_Heavy_Font_Download/avenir_heavy_font_download.eot');
+    src: url('../fonts/Avenir_Heavy_Font_Download/avenir_heavy_font_download.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Avenir_Heavy_Font_Download/avenir_heavy_font_download.woff2') format('woff2'),
+         url('../fonts/Avenir_Heavy_Font_Download/avenir_heavy_font_download.woff') format('woff'),
+         url('../fonts/Avenir_Heavy_Font_Download/avenir_heavy_font_download.ttf') format('truetype'),
+         url('../fonts/Avenir_Heavy_Font_Download/avenir_heavy_font_download.svg#avenir_85_heavyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}*/
+
+@font-face {
+	font-family:'AvenirLTStd-Heavy';
+	src: url('../fonts/AvenirLTStd-Heavy/AvenirLTStd-Heavy_gdi.eot');
+	src: url('../fonts/AvenirLTStd-Heavy/AvenirLTStd-Heavy_gdi.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/AvenirLTStd-Heavy/AvenirLTStd-Heavy_gdi.woff') format('woff'),
+		url('../fonts/AvenirLTStd-Heavy/AvenirLTStd-Heavy_gdi.ttf') format('truetype'),
+		url('../fonts/AvenirLTStd-Heavy/AvenirLTStd-Heavy_gdi.svg#AvenirLTStd-Heavy') format('svg');
+	font-weight: 700;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0020-25CA;
+}
+@font-face {
+	font-family:'AvenirLTStd-Medium';
+	src: url('../fonts/AvenirLTStd-Medium/AvenirLTStd-Medium_gdi.eot');
+	src: url('../fonts/AvenirLTStd-Medium/AvenirLTStd-Medium_gdi.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/AvenirLTStd-Medium/AvenirLTStd-Medium_gdi.woff') format('woff'),
+		url('../fonts/AvenirLTStd-Medium/AvenirLTStd-Medium_gdi.ttf') format('truetype'),
+		url('../fonts/AvenirLTStd-Medium/AvenirLTStd-Medium_gdi.svg#AvenirLTStd-Medium') format('svg');
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+0020-25CA;
+}
 /*
 This CSS resource incorporates links to font software which is the valuable copyrighted
 property of Monotype and/or its suppliers. You may not attempt to copy, install,
@@ -114,7 +151,10 @@ The provided mixins are intended to be used with the array-like variables
    ========================================================================== */
 /* line 5, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/type */
 h1, .h1, h2, .h2, h3, .h3 {
-  font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+ /* font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; */
+  /*font-family: 'avenir_85_heavyregular';*/
+  font-family:'AvenirLTStd-Heavy';
+  }
 
 /* line 9, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/type */
 h1, .h1 {
@@ -153,32 +193,39 @@ h6, .h6 {
 
 /* line 1, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/buttons */
 .button {
-  background: #f07d00;
-  color: #fff;
-  font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-size: 24px;
-  display: inline-block;
-  margin-left: 10px; }
+    background: rgba(0, 0, 0, 0) url("../img/button-bg.png") no-repeat scroll 5px 0;
+    color: #fff;
+    display: inline-block;
+    font-family: "AvenirLTStd-Heavy";
+    font-size: 18px;
+    margin-left: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+}
   /* line 12, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/buttons */
   .button:hover {
     opacity: 0.8; }
   @media only screen and (min-width : 930px) {
-    .button {
-      padding: 5px 20px; } }
+   .button {
+    padding: 9px 35px;
+}
+}
 
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 /* line 5, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/base */
 html {
-  font: 16px/1.4 Arial, "Helvetica Neue", Helvetica, sans-serif;
+  /*font: 16px/1.4 Arial, "Helvetica Neue", Helvetica, sans-serif;*/
+ /* font-family: 'avenir_85_heavyregular';*/
+ font-family:'AvenirLTStd-Heavy';
   overflow-y: scroll;
   min-height: 100%; }
 
 /* apply a natural box layout model to all elements, but allowing components to change */
 /* line 13, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/base */
+body, html { height:100%; }
+
 html {
   box-sizing: border-box; }
 
@@ -265,7 +312,7 @@ nav {
   padding-top: 20px; }
   @media only screen and (min-width : 930px) {
     nav {
-      padding: 10px 0; } }
+      padding: 14px 0; } }
 
 /* line 30, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/layout */
 .inner {
@@ -273,8 +320,133 @@ nav {
   width: 930px;
   margin: 0 auto; }
   @media only screen and (max-width : 930px) {
-    .inner {
-      padding: 0 3%; } }
+   /* .inner {
+      padding: 0 3%; }*/
+	  .inner {
+    padding: 0;
+}
+.inner h1 {
+    font-size: 50px;
+    line-height: 58px;
+    padding: 15px;
+}
+header .logo {
+    text-align: center;
+}
+ 
+
+header {
+  background: url(../img/header-background-mobile.jpg) no-repeat center bottom #f7cb66;
+  background-size:cover;
+   /*background: #838c91 url("../img/header-background-desktop.jpg") no-repeat scroll 50% 100%;*/
+  padding-bottom: 60px;
+  min-height:100%; 
+  
+  }	
+
+.header-pading > p {
+    padding: 16px;
+}
+
+.puzzle {
+    padding-top: 19px;
+}
+
+.inner h1 {
+       font-size: 35px !important;
+    line-height: 40px !important;
+
+}
+.navigation .inner ul {
+    padding-left: 0 !important;
+}
+.button {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../img/button-bg.png");
+    background-origin: padding-box;
+    background-position: 3px 0;
+    background-repeat: no-repeat;
+    color: #fff;
+    display: inline-block;
+    font-family: "AvenirLTStd-Heavy";
+    font-size: 15px;
+    margin-left: 10px;
+    padding: 10px 45px;
+    text-decoration: none;
+}
+.videos h2 {
+    color: #15afdf;
+    font-size: 50px;
+    opacity: 0.9;
+    text-transform: none;
+}
+.videos  p {
+    color: #7e7e7e;
+    font-size: 17px;
+    margin: 20px 0 70px;
+}
+.videos {
+    background: none !important;
+	    padding-left: 10px;
+    padding-right: 10px;
+	margin-bottom: 0px;
+	padding-bottom: 30px;
+}
+.videos .accordion .tile {
+    background: #0f52a1 !important;
+    margin-bottom: 10px !important;
+	   
+}
+.further-information {
+    text-align: center;
+    background: none;
+    margin-bottom: 0;
+    padding: 30px 15px;
+}
+.further-information .button {
+    background-color: #fff !important;
+}
+.information .button {
+    padding: 10px 57px;
+    
+}
+.further-information {
+   
+    background: none !important;
+}
+.further-information h2 {
+    font-size: 40px !important;
+    line-height: 41px;
+}
+footer .footerFeatures {
+    padding: 0 16px;
+}
+footer .footer-nav {
+    padding: 0 16px;
+}
+footer .importantNotice {
+    padding: 20px 16px !important;
+}
+
+.inner h1 {
+	padding-top:18px !important;
+}
+nav li.last-child {
+    padding: 0px;
+    text-decoration: none;
+  
+}
+.footer-nav .inner ul {
+    border-top: 1px solid #efc481;
+    padding-top: 10px;
+}
+
+	
+	
+	  
+	   }
 
 @-webkit-keyframes fallAwayNew {
 
@@ -359,20 +531,76 @@ nav {
    Global header class
    ========================================================================== */
 /* line 4, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/header */
+
+@media only screen and (min-width : 768px) and (max-width: 1024px){
+	.header-pading h1 {
+    font-size: 50px !important;
+    line-height: 55px !important;
+    margin-top: 7%;
+    width: 72%;
+}
+header .logo {
+    text-align: left;
+}
+.header-pading p {
+    
+    width: 72%;
+}
+}
+
+@media only screen and (min-width : 650px) and (max-width: 750px){
+	header { background-position:0 -700px; min-height:500px; }
+}
+
+@media only screen and (max-width : 640px) and (min-width : 480px) {
+	header { background-position:0 -550px; }
+}
+
+@media only screen and (max-width : 480px) {
+	header { background-position:0 -450px; }
+} 
+
+
 header {
-  background: url(../img/header-bg-mobile.jpg) no-repeat 50% 100% #f7cb66;
-  padding-bottom: 60px; }
-  @media only screen and (min-width : 930px) {
-    header {
-      background-image: url(../img/header-bg-desktop.jpg); } }
+  /*background: url(../img/header-bg-mobile.jpg) no-repeat 50% 100% #f7cb66;
+ 
+  padding-bottom: 60px;*/ }
+@media only screen and (min-width : 930px) {
+/*header {
+      background: url(../img/header-background-desktop.jpg) no-repeat center bottom #f7cb66;
+	   min-height: 100%;
+	   background-size:cover;
+} */
+
+header {
+    background: #f7cb66 url("../img/header-background-desktop.jpg") no-repeat scroll 0 0;
+    min-height: 584px;
+}
+}
   /* line 15, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/header */
   header .logo {
-    padding: 20px 0 60px; }
+    background-color: #fff;
+    padding: 16px 28px;
+}
+.inner h1 {
+    font-size: 50px;
+    line-height: 58px;
+    padding-top: 82px;
+}
+.header-pading h1 {
+    margin-bottom: 10px;
+}
+
   /* line 19, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/header */
-  header p {
-    font-size: 24px;
-    color: #fff; }
-    @media only screen and (min-width : 930px) { }
+header p {
+    color: #d0d2d2;
+    font-family: "AvenirLTStd-Medium";
+    font-size: 20px;
+    line-height: 32px;
+    padding-right: 106px;
+    padding-top: 5px;
+}
+@media only screen and (min-width : 930px) { }
 
 /* line 30, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/header */
 h1 {
@@ -385,7 +613,7 @@ nav:after {
   clear: both; }
 /* line 9, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/nav */
 .large-screen nav {
-  background: #fff;
+  background: #e6e6e6;
   margin: 0 auto;
   top: 0;
   width: 100%;
@@ -395,30 +623,52 @@ nav li {
   display: block;
   text-transform: uppercase;
   float: left;
-  font-size: 24px;
-  font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+  font-size: 20px;
+  /*font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/ 
+  /*font-family: 'avenir_85_heavyregular';*/
+  font-family:'AvenirLTStd-Heavy';
+  }
   /* line 32, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/nav */
-  nav li a {
-    color: #006a65;
-    text-decoration: none;
+nav li a {
+    color: #464646;
     display: block;
-    padding: 6px 50px 0; }
+    font-size: 18px;
+    padding: 4px 22px 0;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.navigation .inner ul {
+    padding-left: 12%;
+}
+
     /* line 40, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/nav */
     .ieold nav li a {
       padding: 6px 0 0;
       width: 175px; }
     /* line 45, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/nav */
     nav li a:hover {
-      color: #666; }
+    /*  color: #666;*/
+	    color: #00a5e2;
+	   }
+	   .last-child .button:hover {
+    color: #fff;
+}
   /* line 50, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/nav */
   nav li:first-of-type a {
-    padding-left: 0; }
+    font-size: 18px;
+    padding-left: 25px;
+}
   /* line 55, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/nav */
   nav li.last-child {
+    color: #464646;
     display: block;
-    color: #f07d00;
-    float: right;
-    width: auto; }
+    font-size: 18px;
+    margin-top: -5px;
+    padding: 0 23px;
+    text-decoration: none;
+    text-transform: capitalize;
+    width: auto;
+}
     @media only screen and (max-width : 930px) {
       nav li.last-child {
         float: none; } }
@@ -448,15 +698,19 @@ nav li {
 
 /* line 1, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/sections */
 .get-started {
-  background: #006a65;
-  color: #fff; }
+    /*background: #fff;*/
+	padding-top: 30px;
+	    margin-bottom: 40px;
+    color: #464646;
+	 background:url(../img/bg-image.png) no-repeat bottom left #fff;
+}
   @media only screen and (max-width : 930px) {
     .get-started {
       display: none; } }
 
 /* line 11, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/sections */
 .puzzle {
-  background: #006a65;
+  background: #fff;
   color: #fff; }
 
 /* line 19, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/sections */
@@ -465,13 +719,24 @@ section {
   /* line 21, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/sections */
   section h2 {
     margin-bottom: 20px; }
+	.get-started .inner h2 {
+    text-transform: none;
+    text-align: center;
+    font-size: 50px;
+    color: #464646;
+   /* opacity: 0.9;*/
+	    margin-bottom: 50px;
+}
     /* line 24, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/sections */
-    section h2 ~ p {
-      font-size: 18px;
-      margin: 20px 0 70px; }
+   section h2 ~ p {
+    font-size: 18px;
+    margin: 25px 0 70px;
+}
   /* line 30, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/sections */
   section h3 {
-    font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+   /* font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+	font-family:'AvenirLTStd-Heavy';
+	 }
 
 /* line 1, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/step-list */
 .step-list {
@@ -490,7 +755,7 @@ section {
     position: relative; }
     /* line 14, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/step-list */
     .step-list li a {
-      color: #fff;
+      color: #8f8f8f;
       text-decoration: none; }
       /* line 17, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/step-list */
       .step-list li a:hover {
@@ -503,26 +768,31 @@ section {
     .step-list li span {
       display: block;
       max-width: 110px;
-      margin: 0 auto;
-      font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+         margin: 5px auto;
+		 padding: 0 5px;
+      /*font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+	 font-family:'AvenirLTStd-Medium';
+	   }
     /* line 41, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/step-list */
-    .step-list li.steps i {
-      background-image: url(../img/sprites.png);
-      background-position: 0px -98px;
-      width: 111px;
-      height: 111px; }
+   .step-list li.steps i {
+    background-image: url("../img/sprites-icon.png");
+    background-position: 0 -97px;
+    height: 112px;
+    width: 111px;
+}
     /* line 46, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/step-list */
     .step-list li.draw i {
-      background-image: url(../img/sprites.png);
-      background-position: 0px -320px;
-      width: 111px;
-      height: 111px; }
+    background-image: url("../img/sprites-icon.png");
+    background-position: 0 -320px;
+    height: 112px;
+    width: 111px;
+}
     /* line 51, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/step-list */
     .step-list li.draw:before, .step-list li.draw:after {
       content: '';
       width: 150px;
       height: 2px;
-      background: #00827c;
+      background: #fff;
       display: block;
       position: absolute;
       top: 55px; }
@@ -534,10 +804,11 @@ section {
       right: -75px; }
     /* line 69, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/step-list */
     .step-list li.win i {
-      background-image: url(../img/sprites.png);
-      background-position: 0px -209px;
-      width: 111px;
-      height: 111px; }
+    background-image: url("../img/sprites-icon.png");
+    background-position: 0 -209px;
+    height: 112px;
+    width: 111px;
+}
 
 /* line 2, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/accordion */
 .accordion .tile {
@@ -584,8 +855,24 @@ section {
 
 /* line 60, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/accordion */
 .videos {
-  background: #f07d00;
-  color: #fff; }
+    background: #fff url("../img/bg-image.png") no-repeat scroll -2% 96%;
+    color: #fff;
+    margin-bottom: 0;
+    padding-top: 50px;
+}
+  .videos h2 {
+    font-size: 50px;
+	    opacity: 0.9;
+}
+  .inner.tabs h2 {
+    color: #14a6da;
+	text-transform: capitalize;
+	 
+}
+.inner.tabs p {
+    color: #737373;
+	margin-top:0;
+}
   /* line 66, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/accordion */
   .videos .accordion .tile {
     background: #ff9f58;
@@ -596,8 +883,22 @@ section {
       padding-bottom: 0; }
 
 /* line 6, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/puzzle */
-.tile h3 {
-  text-transform: uppercase; }
+
+.surprise .tile h3 {
+    color: #fff;
+    font-size: 20px;
+    opacity: 0.8;
+    text-transform: uppercase;
+	font-family: "AvenirLTStd-Heavy";
+}
+.tile-content h4 {
+    color: #fff;
+    font-family: "AvenirLTStd-Medium";
+    font-size: 16px;
+    line-height: 25px;
+    opacity: 0.8;
+    padding: 5px 12px 0 0;
+}
 /* line 10, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/puzzle */
 .tile a {
   color: #fff; }
@@ -629,7 +930,7 @@ section {
     /*$green-light*/ }
     /* line 64, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/puzzle */
     .puzzle .accordion .tile .tile-inner {
-      background-color: #00827c;
+      background-color: #15afdf;
       margin: -8px -4% -10px;
       padding: 0 4%; }
     /* line 74, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/puzzle */
@@ -641,7 +942,7 @@ section {
     /* line 80, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/puzzle */
     .puzzle .accordion .tile:first-child {
       background-image: none;
-      background-color: #00827c;
+      background-color: #15afdf;
       padding-top: 20px; }
     /* line 90, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/puzzle */
     .week2 .puzzle .accordion .tile:nth-child(-n+3) {
@@ -667,7 +968,7 @@ section {
     /* line 118, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/puzzle */
     .puzzle .accordion .tile:last-child {
       padding-bottom: 30px;
-      background-color: #00827c; }
+      background-color: #15afdf; }
   /* line 128, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/puzzle */
   .puzzle .inner {
     padding: 0;
@@ -906,8 +1207,10 @@ section {
 
 /* line 1, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/tabs */
 .tabs-header {
-  clear: both;
-  margin-bottom: 2px; }
+    clear: both;
+    margin-bottom: 5px;
+   /* margin-left: 5px;*/
+}
   /* line 81, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/mixins */
   .tabs-header:after {
     content: "";
@@ -918,26 +1221,52 @@ section {
       display: none; } }
   /* line 9, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/tabs */
   .tabs-header ul {
-    margin-left: -2px; }
+    /*margin-left: -2px;*/ }
   /* line 15, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/tabs */
   .tabs-header li {
-    font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   /* font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+   font-family:'AvenirLTStd-Heavy';
     text-transform: uppercase;
     font-size: 18px;
     display: block;
     float: left;
     width: 25%; }
+	
+.step2 a {
+    background-color: #0f52a1;
+  
+    width: 97% !important;
+}	
+.step3 a {
+    background-color: #0f52a1;
+   
+    width: 98% !important;
+}	
+	.step-first-bg-img
+{
+	background:url(../img/step-first-bg-img.png) no-repeat #fff;	
+	
+}
+.step-last-bg-img {
+    background: url(../img/step-last-bg-img.png) no-repeat #fff 3px 0;
+}
     /* line 22, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/tabs */
-    .tabs-header li a {
-      background-color: #ff9f58;
-      color: #fff;
-      display: block;
-      padding: 20px;
-      text-decoration: none;
-      margin-left: 2px; }
+  .tabs-header li a {
+    color: #fff;
+    display: block;
+    font-family: "AvenirLTStd-Heavy";
+    font-size: 18px;
+    margin-left: 2px;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+}
     /* line 32, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/tabs */
-    .tabs-header li.active a {
-      background-color: #d56400; }
+	
+	
+   /* .tabs-header li.active a {
+      background-color: #0f52a1;
+	   }*/
 
 /* line 42, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/tabs */
 .tabs .tile {
@@ -972,40 +1301,55 @@ section {
 /* line 1, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/cta */
 .cta {
   text-align: center;
-  background: #005c58;
+  background: #e6e6e6;
   color: #fff;
-  padding: 20px 0 30px; }
+ padding: 20px 0 30px; }
   @media only screen and (max-width : 930px) {
     .cta {
+		color: #464646;
       padding: 30px 0; } }
   /* line 9, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/cta */
-  .cta p {
-    font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-size: 24px; }
+ .cta p {
+    color: #464646;
+    font-family: "AvenirLTStd-Heavy";
+    font-size: 18px;
+    opacity: 0.9;
+    padding-top: 0;
+}
     /* line 13, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/cta */
-    .cta p span {
-      display: inline-block;
-      margin-top: 10px; }
+   .cta p span {
+    display: inline-block;
+    margin-left: 12px;
+    margin-top: 10px;
+}
   /* line 19, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/cta */
   .cta .button {
+   /* background: #ee7100 none repeat scroll 0 0;*/
+    color: #fff;
     display: inline-block;
-    background: #fff;
-    color: #005c58; }
+}
   /* line 25, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/cta */
   .cta.cta-alt {
-    background: #e77301; }
+    background: #e6e6e6; }
     /* line 28, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/cta */
-    .cta.cta-alt .button {
-      color: #f07d00; }
+  .cta.cta-alt .button {
+    color: #fff;
+}
+
   /* line 33, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/cta */
   .cta.cta-alt2 {
-    background: #cbcbcb;
+        background: #e6e6e6;
     color: #005c58;
-    padding-bottom: 40px; }
+   /* padding-bottom: 40px;*/
+       padding-top: 30px; }
 
 /* line 1, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
 .further-information {
-  text-align: center; }
+  text-align: center; 
+  background: url(../img/bg-image.png) no-repeat bottom left #fff;
+  margin-bottom: 38px;
+  
+  }
   /* line 81, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/mixins */
   .further-information:after {
     content: "";
@@ -1013,22 +1357,34 @@ section {
     clear: both; }
   /* line 5, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
   .further-information h2 {
-    color: #006a65; }
+    color: #14a6da;
+	  text-transform: capitalize;
+	 
+	  font-size: 50px;
+	  opacity:0.9;
+}
     /* line 8, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
     .further-information h2 ~ p {
-      color: #006a65; }
+    color: #737373;
+	margin-top: 0;
+}
   /* line 13, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
   .further-information h3 {
-    color: #006a65;
+        color: #464646;
     padding-bottom: 10px;
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid #c4c4c4;
     max-width: 210px;
-    margin: 10px auto; }
+        margin: 15px auto;
+	font-size: 20px;
+	font-family:'AvenirLTStd-Heavy';
+	}
   /* line 23, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
   .further-information ol p {
-    font-size: 16px;
-    color: #666;
-    margin: 10px 0; }
+    color: #6b6b6b;
+    font-family: "AvenirLTStd-Medium";
+    font-size: 17px;
+    line-height: 21px;
+}
   /* line 29, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
   .further-information li {
     margin-bottom: 40px; }
@@ -1051,29 +1407,30 @@ section {
       @media only screen and (min-width : 930px) { }
     /* line 63, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
     .further-information a.consolidate i {
-      background-image: url(../img/sprites.png);
+      background-image: url(../img/sprites-icon.png);
       background-position: 0px -711px;
       width: 140px;
       height: 140px; }
       @media only screen and (min-width : 930px) { }
     /* line 73, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
     .further-information a.grow i {
-      background-image: url(../img/sprites.png);
+      background-image: url(../img/sprites-icon.png);
       background-position: 0px -851px;
       width: 140px;
       height: 140px; }
     /* line 78, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
     .further-information a.invest i {
-      background-image: url(../img/sprites.png);
+      background-image: url(../img/sprites-icon.png);
       background-position: 0px -571px;
       width: 140px;
       height: 140px; }
     /* line 83, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
     .further-information a.protect i {
-      background-image: url(../img/sprites.png);
-      background-position: 0px -431px;
-      width: 140px;
-      height: 140px; }
+    background-image: url("../img/sprites-icon.png");
+    background-position: 0 -432px;
+    height: 140px;
+    width: 140px;
+}
   /* line 91, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/information-list */
   .further-information .button {
     background-color: #006a65; }
@@ -1092,11 +1449,11 @@ footer {
   margin-top: -10px; }
   /* line 12, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
   footer .footerFeatures {
-    background: #f07d00; }
+       background: #de8902; }
     /* line 19, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
     footer .footerFeatures ul {
       padding-top: 20px;
-      border-bottom: 1px solid #ff9f58; }
+     border-bottom:none; }
       /* line 81, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/mixins */
       footer .footerFeatures ul:after {
         content: "";
@@ -1108,15 +1465,20 @@ footer {
       padding: 20px 0;
       position: relative; }
       @media only screen and (min-width : 930px) {
-        footer .footerFeatures li {
-          width: 33.3%;
-          float: left;
-          min-height: 75px;
-          padding: 0 10px 20px;
-          border-left: 1px solid #ff9f58; }
+       footer .footerFeatures li {
+    border-left: 1px solid #ff9f58;
+    float: left;
+    min-height: 50px;
+    padding: 0 0 20px 20px;
+    width: 324px;
+}
           /* line 43, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
           footer .footerFeatures li:first-child {
-            border: none; } }
+    border: medium none;
+    width: 282px;
+}
+			
+			}
       /* line 51, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
       footer .footerFeatures li i {
         display: block;
@@ -1132,7 +1494,7 @@ footer {
       footer .footerFeatures li h2 {
         text-transform: none;
         text-align: left;
-        font-size: 24px; }
+        font-size: 22px; }
       /* line 69, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
       footer .footerFeatures li a {
         color: #fff;
@@ -1142,34 +1504,38 @@ footer {
         padding-left: 35px; }
       /* line 78, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
       footer .footerFeatures li p {
-        font-size: 14px; }
+        font-size: 12px;
+		font-family:'AvenirLTStd-Medium'; }
       /* line 83, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
       footer .footerFeatures li.col1 i {
-        background-image: url(../img/sprites.png);
+        background-image: url(../img/sprites-icon.png);
         background-position: 0px -41px;
         width: 27px;
         height: 27px; }
       /* line 88, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
-      footer .footerFeatures li.col2 i {
-        background-image: url(../img/sprites.png);
-        background-position: 0px -68px;
-        width: 27px;
-        height: 30px; }
+  footer .footerFeatures li.col2 i {
+    background-image: url("../img/sprites-icon.png");
+    background-position: 8px -69px;
+    height: 31px;
+    width: 42px;
+}
       /* line 93, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
-      footer .footerFeatures li.col3 i {
-        background-image: url(../img/sprites.png);
-        background-position: 0px -15px;
-        width: 27px;
-        height: 26px; }
+     footer .footerFeatures li.col3 i {
+    background-image: url("../img/sprites-icon.png");
+    background-position: 7px -13px;
+    height: 27px;
+    width: 37px;
+}
   /* line 102, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
   footer .footer-nav {
-    background: #f07d00; }
+    background: #de8902;
+}
     /* line 105, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
     footer .footer-nav ul {
       padding: 40px 0; }
       @media only screen and (min-width : 930px) {
         footer .footer-nav ul {
-          padding-top: 10px; }
+          padding-top: 25px; }
           /* line 81, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/mixins */
           footer .footer-nav ul:after {
             content: "";
@@ -1177,36 +1543,51 @@ footer {
             clear: both; } }
     /* line 116, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
     footer .footer-nav li a, footer .footer-nav li span {
-      color: #fff;
-      opacity: 0.7;
-      display: block;
-      padding: 10px 0;
-      text-decoration: none;
-      font-size: 14px; }
+    color: #fff;
+    display: block;
+    font-family: arial;
+    font-size: 12px;
+    opacity: 0.7;
+    padding: 10px 0;
+    text-decoration: none;
+}
+.footer-nav .inner ul {
+    padding-bottom: 15px;
+}
       @media only screen and (min-width : 930px) {
         footer .footer-nav li a, footer .footer-nav li span {
           line-height: 1;
-          border-left: 1px solid #ff9f58;
+          border-left:none;;
           padding: 0 10px; } }
     /* line 133, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
     footer .footer-nav li a:hover {
       opacity: 1; }
     @media only screen and (min-width : 930px) {
       footer .footer-nav li {
-        float: left; }
+        float: left;
+		 }
         /* line 141, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
         footer .footer-nav li span {
           border: none; } }
   /* line 152, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
   footer .importantNotice {
     padding: 20px 0;
-    background: #e2e2e2;
-    color: #666;
-    font-size: 12px; }
+    background: #fff;
+     color: #6e6e6e;
+    font-size: 12px;
+	font-family:'AvenirLTStd-Medium'; }
+.importantNotice .inner p {
+    color: #adadad;
+    font-size: 12px;
+    line-height: 20px;
+	font-family:'AvenirLTStd-Medium';
+}
     /* line 154, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/footer */
-    footer .importantNotice h4 {
-      font-family: "HelveticaNeueW02-77BdCn 694066", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-      font-size: 14px; }
+ footer .importantNotice h4 {
+   
+    font-size: 12px;
+    font-weight: bold;
+}
 
 /* ==========================================================================
    Icon classes
@@ -1326,3 +1707,5 @@ footer {
   /* line 63, C:/TFSProjects/Prime Super/Main/HTMLMicrosites/SuperannuationPuzzle/resources/dev/./css/src/print */
   h2, h3 {
     page-break-after: avoid; } }
+	
+	
